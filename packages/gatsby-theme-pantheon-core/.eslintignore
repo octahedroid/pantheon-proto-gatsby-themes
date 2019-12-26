@@ -1,0 +1,6 @@
+.cache
+public
+node_modules
+tailwind.config.js
+theme.js
+gatsby-config.js
