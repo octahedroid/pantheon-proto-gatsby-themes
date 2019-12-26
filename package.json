@@ -1,0 +1,19 @@
+{
+  "name": "pantheon-proto-gatsby-themes",
+  "version": "1.0.0",
+  "description": "multi gatsby implementation",
+  "main": "index.js",
+  "repository": "git@github.com:octahedroid/pantheon-proto-gatsby-themes.git",
+  "author": "Octahedroid",
+  "license": "MIT",
+  "scripts": {
+    "develop": "yarn workspace example-site develop"
+  },
+  "workspaces": [
+    "packages/*",
+    "gatsby-drupal-dark",
+    "gatsby-drupal-shadowing",
+    "gatsby-wordpress",
+    "gatsby-drupal"
+  ]
+}
