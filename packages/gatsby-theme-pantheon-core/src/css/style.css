@@ -46,6 +46,96 @@
  */
 @tailwind utilities;
 
+
+h1 {
+  @apply text-h1 font-medium text-gray-600;
+}
+h2 {
+  @apply text-h2 font-medium text-gray-600;
+}
+h3 {
+  @apply text-h3 font-medium text-gray-600;
+}
+h4 {
+  @apply text-h4 font-medium text-gray-600;
+}
+h5 {
+  @apply text-h5 font-medium text-gray-600;
+}
+h6 {
+  @apply text-h6 font-medium text-gray-600;
+}
+p{
+  @apply font-sans text-base mb-1 text-gray-600 mb-2;
+}
+strong{
+  @apply font-medium;
+}
+a {
+  @apply text-base text-blue-700 underline;
+}
+blockquote {
+  @apply font-serif text-2xl italic text-gray-700 border-l-2 border-gray-700 pl-3 my-4 mx-5;
+}
+blockquote p{
+  @apply text-2xl;
+}
+hr {
+  @apply h-0 w-full block border-0 border-t border-gray-700 my-2 p-0;
+}
+table {
+  @apply overflow-x-auto min-h-0 bg-white border-collapse w-full max-w-full mb-3 border border-gray-400;
+  border-spacing: 0;
+}
+
+th {
+  @apply text-left;
+}
+td, th {
+  @apply p-0;
+}
+
+table > thead > tr > th, table > thead > tr > td{
+  @apply border-b-2;
+}
+table > thead > tr > th, table > tbody > tr > th, table > tfoot > tr > th, table > thead > tr > td, table > tbody > tr > td, table > tfoot > tr > td {
+  @apply border border-gray-400;
+}
+
+table > thead > tr > th {
+  @apply text-sm align-bottom border-b-2 border-gray-400 w-1 bg-gray-300 text-gray-800;
+}
+table > thead > tr > th, table > tbody > tr > th, table > tfoot > tr > th, table > thead > tr > td, table > tbody > tr > td, table > tfoot > tr > td {
+  @apply p-2 leading-normal align-top border-t border-gray-400;
+}
+table > tbody > tr:nth-of-type(odd) {
+  @apply bg-gray-400;
+}
+table > tbody > tr:hover {
+  @apply bg-gray-300;
+}
+
+ul {
+  @apply pl-4 my-3;
+}
+ul>li{
+  @apply list-disc text-base text-gray-600;
+}
+
+ol {
+  @apply pl-4 my-3;
+}
+ol>li{
+  @apply list-decimal text-base text-gray-600;
+}
+label{
+  @apply text-base
+}
+article input[type="text"], article input[type="password"], article input[type="email"], article input[type="date"], textarea, select {
+  @apply text-lg leading-normal bg-white rounded-none border border-gray-700 block w-full p-2 m-0;
+  -webkit-appearance: none;
+}
+
 /**
  * Here you would add any custom utilities you need that don't come out of the
  * box with Tailwind.

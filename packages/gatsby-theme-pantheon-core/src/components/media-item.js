@@ -10,12 +10,12 @@ import Paragraph from './paragraph';
 import EILink from './link-external-internal'
 
 // flex-row-reverse
-const MediaItem = ({reverse, to}) => {
+const MediaItem = ({reverse, to, children}) => {
   const innerComponent = (
     <div className={cx('flex',{
       'flex-row-reverse': reverse
     })}>
-    {props.children}
+    {children}
     </div>
   );
     return to ? <EILink to={to}>{innerComponent}</EILink>:innerComponent;
@@ -23,8 +23,8 @@ const MediaItem = ({reverse, to}) => {
 };
 
 MediaItem.Column = props => (<div className={cx("p-3", {
-  'w-3/12': !props.image,
-  'w-9/12': props.image,
+  'w-3/12': props.image,
+  'w-9/12': !props.image,
 })}>{props.children}</div>)
 MediaItem.Image = props => (<FluidImage src={props.name} />)
 MediaItem.Title = props => (<Title as="h5" className="font-bold" color="primary">{props.children}</Title>)

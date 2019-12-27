@@ -45,7 +45,7 @@ Header.Navbar = ({ handleShowSidebar, children }) => {
         className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block bg-white text-black z-20"
         id="nav-content"
       >
-        <ul className="list-reset lg:flex justify-end flex-1 items-center">
+        <ul className="list-reset lg:flex justify-end flex-1 items-center p-0 m-0">
           {children}
         </ul>
       </div>
@@ -62,7 +62,7 @@ Header.Navbar = ({ handleShowSidebar, children }) => {
 Header.MenuItem = ({ children, to, active }) => {
   const { theme } = useThemeUI();
   return (
-    <li className="mr-3">
+    <li className="mr-3 list-none">
       <Link
         className={cx(
           "flex items-center uppercase h-navbar no-underline border-t-4 hover:text-secondary hover:border-secondary py-3 px-1 mx-2",

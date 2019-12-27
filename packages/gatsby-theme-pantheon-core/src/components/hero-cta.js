@@ -12,9 +12,9 @@ import Paragraph from "./paragraph";
 // add change image for form
 // add form for cta
 
-const HeroCta = ({ intro, title, text, to, ctaText, imageName }) => {
+const HeroCta = props => {
   return (
-    <div className="bg-white py-4 lg:py-5 lg:pb-3 px-3 lg:px-0">
+    <div className="bg-white py-4 lg:py-2 lg:pb-3 px-3 lg:px-0">
       <div className="container flex mx-auto flex-wrap items-center">
         {props.children}
       </div>
