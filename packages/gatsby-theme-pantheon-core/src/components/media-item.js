@@ -10,35 +10,24 @@ import Paragraph from './paragraph';
 import EILink from './link-external-internal'
 
 // flex-row-reverse
-const MediaItem = ({reverse, image, title, content, link}) => {
-  const component = (
+const MediaItem = ({reverse, to}) => {
+  const innerComponent = (
     <div className={cx('flex',{
       'flex-row-reverse': reverse
     })}>
-      <div className="w-3/12 p-3">
-        {_isString(image)&&<FluidImage src={image} />}
-        {!_isString(image)&&{image}}
-      </div>
-      <div className="w-9/12 p-3">
-        <Title as="h5" className="font-bold" color="primary">{title}</Title>
-        <Paragraph className="text-md">{content}</Paragraph>
-      </div>
+    {props.children}
     </div>
   );
-    return link ? <EILink link={link}>{component}</EILink>:component;
+    return to ? <EILink to={to}>{innerComponent}</EILink>:innerComponent;
 
 };
 
-MediaItem.propTypes = {
-  reverse: PropTypes.bool,
-  image: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-    PropTypes.object,
-    PropTypes.func,
-  ]),
-  title: PropTypes.string,
-  content: PropTypes.string,
-};
+MediaItem.Column = props => (<div className={cx("p-3", {
+  'w-3/12': props.first,
+  'w-9/12': !props.first,
+})}>{props.children}</div>)
+MediaItem.Image = props => (<FluidImage src={props.name} />)
+MediaItem.Title = props => (<Title as="h5" className="font-bold" color="primary">{props.children}</Title>)
+MediaItem.Text = props => (<Paragraph className="text-md">{props.children}</Paragraph>)
 
 export default MediaItem;

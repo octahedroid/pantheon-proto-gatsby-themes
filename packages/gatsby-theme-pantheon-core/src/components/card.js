@@ -10,39 +10,44 @@ import Title from "./title";
 // add shadows or bordered version and rounded
 // add image left right align?
 //  support bg-color from main colors
-const Card = ({ intro, title, text, image, link, ctaText, ctaButton }) => {
+const Card = props => {
   return (
     <div className="p-3 lg:p-4">
-      {intro && <IntroText>{intro}</IntroText>}
-      {_isString(image) && <ImageProvider src={image} />}
-      {!_isString(image) && <div className="mb-4">{image}</div>}
-      {title && (
-        <Title as="h3" className="font-alternative mb-3">
-          {title}
-        </Title>
-      )}
-      {text && <Paragraph>{text}</Paragraph>}
-      {ctaButton && <Cta link={link} text={ctaText} type="primary" />}
-      {!ctaButton && (
-        <Link
-          to={link}
-          className="text-2xl text-primary no-underline hover:underline"
-        >
-          {ctaText}
-        </Link>
-      )}
+      {props.children}
     </div>
   );
 };
 
-Card.propTypes = {
-  intro: PropTypes.string,
-  title: PropTypes.string,
-  text: PropTypes.string,
-  image: PropTypes.oneOf([PropTypes.string, PropTypes.elementType]),
-  link: PropTypes.string,
-  ctaText: PropTypes.string,
-  ctaButton: PropTypes.string
+Card.Intro = props => <IntroText>{props.children}</IntroText>;
+Card.Image = props => <ImageProvider src={props.name} />;
+Card.Title = props => (
+  <Title as="h3" className="font-alternative mb-3">
+    {props.children}
+  </Title>
+);
+Card.Text = props => <Paragraph>{props.children}</Paragraph>;
+Card.Button = props => <Cta {...props}>{props.children}</Cta>;
+Card.Link = props => (
+  <Link
+    to={props.to}
+    className="text-2xl text-primary no-underline hover:underline"
+  >
+    {props.children}
+  </Link>
+);
+
+Card.Group = props => {
+  return (
+    <div className="container mx-auto py-3">
+      <div className="flex flex-wrap items-start">{props.children}</div>
+    </div>
+  );
 };
+
+Card.GroupTitle = props => (
+  <Title as="h2" font="alternative" centered>
+    {props.children}
+  </Title>
+);
 
 export default Card;

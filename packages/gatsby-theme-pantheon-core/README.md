@@ -17,9 +17,9 @@ gatsby new my-new-website
 Add this theme as a dependency for your site and the tailwindcss library:
 ```sh
 cd my-new-website
-npm install gatsby-theme-octahedroid tailwindcss
+npm install gatsby-theme-pantheon-core tailwindcss
 or
-yarn add gatsby-theme-octahedroid tailwindcss
+yarn add gatsby-theme-pantheon-core tailwindcss
 ```
 
 Then in your `gatsby-config.js` file use the theme as a plugin and in the options `themePath` add your theme file route like this:
@@ -28,7 +28,7 @@ Then in your `gatsby-config.js` file use the theme as a plugin and in the option
 module.exports = {
   plugins: [
     {
-      resolve: `gatsby-theme-octahedroid`,
+      resolve: `gatsby-theme-pantheon-core`,
       options: {
         root: __dirname,
         themePath: `${__dirname}/theme`
@@ -50,7 +50,7 @@ In order for **Theme UI** to use you new theme settings you need to use the `<Th
 If you want to change the components color, fonts, sizes, etc you must create a `theme.js` file at the root of your project, you can extend the original theme by shadowing the original theme file like this:
 
 ```js
-const baseTheme = require('gatsby-theme-octahedroid/theme');
+const baseTheme = require('gatsby-theme-pantheon-core/theme');
 
 const myTheme = {
   ...baseTheme,
@@ -103,7 +103,7 @@ module.exports = myTheme;
 
 ## Deploy
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/octahedroid/gatsbyjs-theme-octahedroid)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/octahedroid/gatsbyjs-theme-pantheon-core)
 
 <br />
 

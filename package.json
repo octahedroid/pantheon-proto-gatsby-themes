@@ -5,9 +5,13 @@
   "main": "index.js",
   "repository": "git@github.com:octahedroid/pantheon-proto-gatsby-themes.git",
   "author": "Octahedroid",
+  "private":true,
   "license": "MIT",
   "scripts": {
-    "develop": "yarn workspace example-site develop"
+    "develop-drupal": "yarn workspace gatsby-theme-pantheon-drupal develop",
+    "develop-wordpress": "yarn workspace gatsby-theme-pantheon-wordpress develop",
+    "develop-dark": "yarn workspace gatsby-theme-pantheon-dark develop",
+    "develop-shadow": "yarn workspace gatsby-theme-pantheon-shadow develop"
   },
   "workspaces": [
     "packages/*",

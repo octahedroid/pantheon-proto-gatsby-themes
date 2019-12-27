@@ -5,7 +5,7 @@ import LinkEI from "./link-external-internal";
 /** @jsx jsx */
 import { jsx, useThemeUI } from "theme-ui";
 // text-black text-white
-const Cta = ({ text, link, type, darkText, className }) => {
+const Cta = ({ children, to, type, darkText, className }) => {
   const { theme } = useThemeUI();
   const ctaClasses = cx('py-3 px-4 inline-block text-xl rounded-full hover:bg-secondary hover:text-lightShade hover:shadow-md', className,{
     [`bg-${type}`]:type,
@@ -14,22 +14,17 @@ const Cta = ({ text, link, type, darkText, className }) => {
   });
   return (
     <LinkEI
-      link={link}
+      to={to}
       className={ctaClasses}
       sx={{
         transition: theme.transitions.bg
       }}
     >
-      {text}
+      {children}
     </LinkEI>
   );
 };
 
-Cta.propTypes = {
-  link: PropTypes.string,
-  text: PropTypes.string,
-  type: PropTypes.string
-};
 Cta.defaultProps = {
   type: "primary"
 };

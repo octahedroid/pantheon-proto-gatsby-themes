@@ -11,7 +11,7 @@ import Paragraph from './paragraph';
 // add change image for form
 // add form for cta
 
-const HeroCta = ({ intro, title, text, link, ctaText, imageName }) => {
+const HeroCta = ({ intro, title, text, to, ctaText, imageName }) => {
   return (
     <div className="bg-white py-4 lg:py-5 lg:pb-3 px-3 lg:px-0">
       <div className="container flex mx-auto flex-wrap items-center">
@@ -19,7 +19,7 @@ const HeroCta = ({ intro, title, text, link, ctaText, imageName }) => {
           {intro && <IntroText>{intro}</IntroText>}
           {title && <Title big>{title}</Title>}
           {text && <Paragraph >{text}</Paragraph>}
-          {ctaText && <Cta link={link} text={ctaText} type="primary" />}
+          {ctaText && <Cta to={to} text={ctaText} type="primary" />}
         </div>
         <div className="w-full lg:w-1/2 hidden md:w-1/3 md:block">
           <ImageProvider src={imageName} />

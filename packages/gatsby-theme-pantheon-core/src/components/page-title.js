@@ -7,18 +7,15 @@ import IntroText from './intro-text';
 import Title from './title';
 
 // leading-tight text-center
-const PageTitle = ({intro, title, centered}) => {
+const PageTitle = ({children, centered}) => {
   return (
     <div className={cx("flex flex-col justify-start ", {'items-center':centered})}>
-      {intro&&<IntroText >{intro}</IntroText>}
-      {title&&<Title as="h1" className={cx("leading-tight",{'text-center':centered})} >{title}</Title>}
+      {children}
     </div>
   );
 };
+PageTitle.Intro = props =>(<IntroText >{props.children}</IntroText>);
+PageTitle.Title = props =>(<Title as="h1" className={cx("leading-tight",{'text-center':props.centered})} >{props.children}</Title>);
 
-PageTitle.propTypes = {
-  intro: PropTypes.string,
-  title: PropTypes.string,
-};
 
 export default PageTitle;

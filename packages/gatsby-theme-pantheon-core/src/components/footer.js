@@ -1,57 +1,28 @@
-import React from "react";
+// horizontal navbar with center , left or right align accept items and a bg color
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from "gatsby";
-import SocialLinks from './social-links';
+import cx from 'classnames'
+import EILink from './link-external-internal';
 
-
-// no branding elastic menu
-
-const Footer = ({navegation, socialNetworks, branding}) => {
-  
+// bg-primary bg-secondary bg-white bg-darkShade bg-lightShade bg-accent justify-center justify-start justify-end block p-1 py-2
+const Footer = (props) => {
   return (
-    <footer className="bg-black">
-      <div className="container mx-auto px-3 py-4 lg:py-6">
-        <div className="w-full flex flex-col md:flex-row flex-wrap items-start">
-          <div className="w-full md:w-1/2 lg:w-1/5 px-4 md:order-1 mb-3 lg:mb-0 flex justify-center lg:justify-start">
-            <Link
-              className="inline-block text-primary no-underline hover:no-underline font-bold text-2xl"
-              to="/"
-            >
-              {branding}
-            </Link>
-          </div>
-          {navegation &&
-            navegation.map(menu => (
-              <div className="w-full md:w-full lg:w-1/5 px-2 md:order-3">
-                <p className="uppercase text-secondary font-bold md:mb-3">{menu.title}</p>
-                <ul className="list-reset mb-3 text-white ">
-                {menu.items &&
-                  menu.items.map(item => (
-                    <li className="mt-2 inline-block mr-2 lg:block lg:mr-0  no-underline hover:underline">
-                      <a
-                        href={item.route}
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                  
-                </ul>
-              </div>
-            ))}
-          <div className="w-full md:w-1/2 lg:w-1/5 px-2 md:order-2 lg:order-4 mt-3 md:mt-0">
-            <SocialLinks
-              items={socialNetworks}
-            />
-          </div>
-        </div>
-      </div>
-    </footer>
+    <div className={cx('flex p-2', {
+      [`bg-${props.bg}`]: props.bg
+    })}>
+      {props.children}
+    </div>
   );
 };
+Footer.Navegation = ({left, right, center, children}) => (<ul className={cx("flex flex-shrink list-reset container mx-auto", {
+  'justify-center': center,
+  'justify-start': left,
+  'justify-end': right,
+  })}>
+    {children}
+  </ul>)
+Footer.Item = props => (<li className="px-2">{props.children}</li>)
+Footer.Link = props => (<EILink to={props.to} className={cx('block p-1 py-2', props.className)}>{props.children}</EILink>)
 
-Footer.propTypes = {
-  socialNetworks: PropTypes.array,
-};
 
 export default Footer;

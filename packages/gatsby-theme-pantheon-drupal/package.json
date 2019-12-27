@@ -1,0 +1,31 @@
+{
+  "name": "gatsby-theme-pantheon-drupal",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Jairo Rondon <jrondon@octahedroid.com> (@digitalhydra)",
+  "license": "MIT",
+  "scripts": {
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "storybook": "NODE_ENV=production start-storybook -p 6006 --debug-webpack",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "gatsby": "^2.17.11",
+    "gatsby-theme-pantheon-core": "^1.0.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "babel-eslint": "10.0.2",
+    "@storybook/addon-actions": "^5.2.6",
+    "@storybook/addon-links": "^5.2.6",
+    "@storybook/addons": "^5.2.6",
+    "@storybook/react": "^5.2.6",
+    "babel-loader": "^8.0.6"
+  }
+}

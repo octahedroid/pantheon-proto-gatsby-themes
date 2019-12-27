@@ -7,7 +7,7 @@ import Title from "./title";
 import Paragraph from './paragraph';
 // support center content
 // bg-darkShade text-white bg-lightShade text-black px-3 py-4 lg:py-6
-const CtaBlock = ({ intro, title, text, link, ctaText, dark }) => {
+const CtaBlock = ({ intro, title, text, to, ctaText, dark }) => {
   return (
     <div
       className={cx('px-3 py-4 lg:py-6',{
@@ -25,7 +25,7 @@ const CtaBlock = ({ intro, title, text, link, ctaText, dark }) => {
         )}
         {ctaText && (
           <Cta
-            link={link}
+            to={to}
             text={ctaText}
             type={dark ? "lightShade" : "darkShade"}
             darkText={dark}

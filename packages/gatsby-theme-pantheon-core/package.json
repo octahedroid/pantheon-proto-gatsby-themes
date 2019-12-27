@@ -45,7 +45,7 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
@@ -68,10 +68,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/octahedroid/gatsby-theme-octahedroid"
+    "url": "https://github.com/octahedroid/pantheon-proto-gatsby-themes"
   },
   "bugs": {
-    "url": "https://github.com/octahedroid/gatsby-theme-octahedroid/issues"
+    "url": "https://github.com/octahedroid/pantheon-proto-gatsby-themes/issues"
   },
   "publishConfig": {
     "access": "public"
