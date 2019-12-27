@@ -34,7 +34,7 @@ const Title = ({ as, font, color, big, centered, children, className }) => {
     })
     }>{children}</StyledHeading>}
     {big&&<h1
-      className={cx('font-alternative font-bold text-4xl leading-snug lg:text-5xl text-black mb-2 lg:mb-3', {'text-center':centered})}
+      className={cx('w-full font-alternative font-bold text-4xl leading-snug lg:text-5xl text-black mb-2 lg:mb-3', {'text-center':centered})}
     >
       {children}
     </h1>}

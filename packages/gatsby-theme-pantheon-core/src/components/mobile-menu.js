@@ -1,18 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
-import {TiTimes} from 'react-icons/ti';
+import { TiTimes } from "react-icons/ti";
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 
-const Sidebar = ({navegation, showSidebar, handleShowSidebar}) => {
-  
+const MobileMenu = ({ children, showSidebar, handleShowSidebar }) => {
   return (
-    <div className="fixed w-full z-30 top-0 right-0 bg-darkShade"
+    <div
+      className="fixed w-full z-30 top-0 right-0 bg-darkShade"
       sx={{
-        transition: 'right 0.5s',
-        right: showSidebar?'0':'-100%',
-        height: '100vh'
+        transition: "right 0.5s",
+        right: showSidebar ? "0" : "-100%",
+        height: "100vh"
       }}
     >
       <div className="relative flex justify-end p-3 w-full pb-0">
@@ -22,25 +22,22 @@ const Sidebar = ({navegation, showSidebar, handleShowSidebar}) => {
         </button>
       </div>
       <div className="text-white text-4xl my-4 font-thin ">
-        <div className="mx-4">
-          <ul id="" className="list-none pl-0">
-          {navegation &&
-            navegation.map(item => (
-              <li className="">
-                <Link className="" to={item.route}>
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <div className="mx-4">{children}</div>
       </div>
     </div>
   );
 };
 
-Sidebar.propTypes = {
-  handleShowSidebar: PropTypes.func,
-};
+MobileMenu.Navegation = props => (
+  <ul className="list-none pl-0">
+    {props.children}
+  </ul>
+);
+MobileMenu.Item = props => <li className="">{props.children}</li>;
+MobileMenu.Link = props => (
+  <Link className="" to={props.to}>
+    {props.children}
+  </Link>
+);
 
-export default Sidebar;
+export default MobileMenu;
