@@ -28,43 +28,7 @@ const ArticleTemplate = ({ data }) => {
           dangerouslySetInnerHTML={{ __html: post.content }}
         ></div>
         <Tags tags={post.frontmatter.tags} />
-        <ShareButtons
-          url={`${process.env.PROJECT_URL}${post.path}`}
-          title={post.frontmatter.title}
-        />
-        <RelatedContent
-          posts={[
-            {
-              title:
-                "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
-              excerpt:
-                "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.",
-              image: "hero.png",
-              link: "/"
-            },
-            {
-              title:
-                "Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus",
-              excerpt:
-                "Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.",
-              image: "hero.png",
-              link: "/"
-            },
-            {
-              title:
-                "Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus",
-              excerpt:
-                "Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.",
-              image: "hero.png",
-              link: "/"
-            }
-          ]}
-        />
-        <Disqus
-          url={`${process.env.PROJECT_URL}${post.path}`}
-          identifier={post.path}
-          title={post.frontmatter.title}
-        />
+        
       </div>
     </Layout>
   );

@@ -97,7 +97,9 @@ function Layout({ children, title }) {
     </ThemeProvider>
   );
 }
-Layout.Container = props =>(<div className={cx("container mx-auto py-4", props.className)}></div>)
+Layout.Container = props =>(<div className={cx("container mx-auto py-4", props.className, {
+  "flex flex-wrap": props.flex
+})}>{props.children}</div>)
 Layout.propTypes = {
   children: PropTypes.node.isRequired
 };
