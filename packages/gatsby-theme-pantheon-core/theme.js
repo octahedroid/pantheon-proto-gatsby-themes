@@ -269,6 +269,12 @@ const fontSizes = {
   '8xl': '6rem',
   '9xl': '7rem',
   '10xl': '8rem',
+  'h1': '1.875rem',
+  'h2': '1.5rem',
+  'h3': '1.25rem',
+  'h4': '1.125rem',
+  'h5': '1rem',
+  'h6': '0.875rem',
 }
 
 const baseFontWeights = {

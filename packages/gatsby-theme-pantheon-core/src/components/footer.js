@@ -14,14 +14,14 @@ const Footer = (props) => {
     </div>
   );
 };
-Footer.Navegation = ({left, right, center, children}) => (<ul className={cx("flex flex-shrink list-reset container mx-auto", {
+Footer.Navegation = ({left, right, center, children}) => (<ul className={cx("flex flex-shrink list-reset container mx-auto m-0 p-0", {
   'justify-center': center,
   'justify-start': left,
   'justify-end': right,
   })}>
     {children}
   </ul>)
-Footer.Item = props => (<li className="px-2">{props.children}</li>)
+Footer.Item = props => (<li className="px-2 list-none">{props.children}</li>)
 Footer.Link = props => (<EILink to={props.to} className={cx('block p-1 py-2', props.className)}>{props.children}</EILink>)
 
 
