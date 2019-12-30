@@ -1,6 +1,10 @@
-module.exports = ({ themePath = `${__dirname}/theme` }) => {
-  
-  return {
+/**
+ * Configure your Gatsby site with this file.
+ *
+ * See: https://www.gatsbyjs.org/docs/gatsby-config/
+ */
+
+module.exports = {
   siteMetadata: {
     title: `Gatsby site with Drupal`,
     description: `Gatsby site with Drupal`,
@@ -13,12 +17,10 @@ module.exports = ({ themePath = `${__dirname}/theme` }) => {
   },
   plugins: [
     {
-      resolve: `gatsby-theme-pantheon-core`,
+      resolve: `gatsby-theme-pantheon-drupal`,
       options: {
         root: __dirname,
-        themePath: themePath
       }
     }
   ]
-};
 }
