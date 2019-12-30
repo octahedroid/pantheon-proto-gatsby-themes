@@ -38,14 +38,17 @@ Header.Branding = props => {
   );
 };
 
-Header.Navbar = ({ handleShowSidebar, children }) => {
+Header.Navbar = ({ handleShowSidebar, children, align }) => {
   return (
     <>
       <div
         className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block bg-white text-black z-20"
         id="nav-content"
       >
-        <ul className="list-reset lg:flex justify-end flex-1 items-center p-0 m-0">
+        <ul className={cx("list-reset lg:flex  flex-1 items-center p-0 m-0", {
+          'justify-end': !align||align==='right',
+          'justify-start': align==='left',
+        })}>
           {children}
         </ul>
       </div>

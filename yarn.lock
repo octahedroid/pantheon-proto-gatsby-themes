@@ -6921,7 +6921,7 @@ gatsby-transformer-yaml@^2.2.16:
     lodash "^4.17.15"
     unist-util-select "^1.5.0"
 
-gatsby@^2.16.3, gatsby@^2.17.11:
+gatsby@^2.16.3, gatsby@^2.17.11, gatsby@^2.18.12:
   version "2.18.17"
   resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.18.17.tgz#43fb4c092b09e76cc9137cfc20c67ba7fdcd755d"
   integrity sha512-Zj/LjZwzM0RXoqMmM+6H48IOazmJcuzyVY2yfTi8oYtcQH0F4xIELiDZJkZQb7mttlIsJTX3U1NLCYXPcohWwg==
@@ -11376,6 +11376,11 @@ prettier@1.18.2:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.18.2.tgz#6823e7c5900017b4bd3acf46fe9ac4b4d7bda9ea"
   integrity sha512-OeHeMc0JhFE9idD4ZdtNibzY0+TPHSpSSb9h8FqtP+YnoZZ1sl8Vc9b1sasjfymH3SonAF4QcA2+mzHPhMvIiw==
 
+prettier@^1.19.1:
+  version "1.19.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
+  integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
+
 pretty-bytes@^5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-5.3.0.tgz#f2849e27db79fb4d6cfe24764fc4134f165989f2"
@@ -11784,7 +11789,7 @@ react-docgen@^4.1.1:
     node-dir "^0.1.10"
     recast "^0.17.3"
 
-react-dom@^16.11.0, react-dom@^16.8.3:
+react-dom@^16.11.0, react-dom@^16.12.0, react-dom@^16.8.3:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.12.0.tgz#0da4b714b8d13c2038c9396b54a92baea633fe11"
   integrity sha512-LMxFfAGrcS3kETtQaCkTKjMiifahaMySFDn71fZUNpPHZQEzmk/GiAeIT8JSOrHB23fnuCOMruL2a8NYlw+8Gw==
