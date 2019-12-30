@@ -1,0 +1,3 @@
+steps:
+  - name: 'ubuntu'
+    args: ["echo", "deploy drupal to pantheon"]
