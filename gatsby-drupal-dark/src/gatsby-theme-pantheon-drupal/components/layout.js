@@ -50,7 +50,7 @@ function Layout({ children, title }) {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="pt-5">
+      <div className="pt-5 bg-white">
         <SEO title={title} />
         <Header scrolled={scrolledMenu}>
           <Header.Branding>
@@ -81,12 +81,12 @@ function Layout({ children, title }) {
           </MobileMenu.Navegation>
         </MobileMenu>
         {children}
-        <Footer bg="darkShade">
+        <Footer bg="white">
           <Footer.Navegation center>
             {mainMenu &&
               mainMenu.map(item => (
                 <Footer.Item active={item.active}>
-                  <Footer.Link to={item.to} active={item.active} className="text-white">
+                  <Footer.Link to={item.to} active={item.active} className="text-black">
                     {item.name}
                   </Footer.Link>
                 </Footer.Item>

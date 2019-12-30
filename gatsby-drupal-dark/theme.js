@@ -6,44 +6,19 @@ const myTheme = {
   ...baseTheme,
   colors: {
     ...baseTheme.colors,
-    primary: '#48BB78',
-    secondary: '#667EEA',
+    black: '#F7FAFC',
+    white: '#1A202C',
+    body: '#F7FAFC',
+    primary: '#FAF089',
+    secondary: '#90CDF4',
     accent: '#ED64A6',
-    darkShade: '#C53030',
+    darkShade: '#F687B3',
     lightShade: '#E2E8F0'
   },
   height:{
     ...baseTheme.height,
     hero: '700px'
   },
-  styles: {
-    ...baseTheme.styles,
-    h1: {
-      ...baseTheme.heading,
-      fontSize: "4rem",
-    },
-    h2: {
-      ...baseTheme.heading,
-      fontSize: "2.5rem",
-    },
-    h3: {
-      ...baseTheme.heading,
-      fontSize: "2rem",
-    },
-    h4: {
-      ...baseTheme.heading,
-      fontSize: "1.5rem",
-    },
-    h5: {
-      ...baseTheme.heading,
-      fontSize: "1.25rem",
-      fontWeight: 'body',
-    },
-    h6: {
-      ...baseTheme.heading,
-      fontSize: "1rem",
-    },
-  }
 }
-// console.log(myTheme);
+console.log(myTheme);
 module.exports = myTheme;
