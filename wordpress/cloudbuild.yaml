@@ -1,0 +1,3 @@
+steps:
+  - name: 'ubuntu'
+    args: ["echo", "deploy wordpress to pantheon"]
