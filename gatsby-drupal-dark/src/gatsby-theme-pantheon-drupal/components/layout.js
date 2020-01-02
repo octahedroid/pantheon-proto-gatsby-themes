@@ -54,7 +54,7 @@ function Layout({ children, title }) {
         <SEO title={title} />
         <Header scrolled={scrolledMenu}>
           <Header.Branding>
-            <FaHandsHelping className="mr-2" /> Pantheon Wordpress
+            <FaHandsHelping className="mr-2" /> Pantheon Drupal Dark
           </Header.Branding>
           <Header.Navbar handleShowSidebar={handleShowSidebar}>
             {mainMenu &&

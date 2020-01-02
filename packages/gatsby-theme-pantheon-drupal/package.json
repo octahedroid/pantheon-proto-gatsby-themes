@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "gatsby": "^2.17.11",
+    "gatsby-source-graphql": "^2.1.28",
+    "gatsby-source-drupal-graphql": "^1.0.0",
     "gatsby-theme-pantheon-core": "^1.0.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"

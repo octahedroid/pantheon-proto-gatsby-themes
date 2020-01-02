@@ -1,0 +1,17 @@
+{
+  "name": "gatsby-source-drupal-graphql",
+  "description": "Gatsby plugin which adds a better Drupal / GraphQL API integration",
+  "version": "1.0.1",
+  "author": "Octahedroid <hq@octahedroid.com>",
+  "dependencies": {
+    "gatsby-source-graphql": "^2.1.28",
+    "gatsby-source-filesystem": "^2.1.35"
+  },
+  "keywords": [
+    "drupal",
+    "gatsby",
+    "gatsby-plugin",
+    "graphql",
+    "preview"
+  ]
+}
