@@ -62,7 +62,7 @@ function Layout({ children, title }) {
               ))}
           </Header.Navbar>
           <Header.Branding>
-            <FaHandsHelping className="mr-2" /> Pantheon Wordpress
+            <FaHandsHelping className="mr-2" /> Pantheon Drupal Shadow
           </Header.Branding>
         </Header>
         <MobileMenu
