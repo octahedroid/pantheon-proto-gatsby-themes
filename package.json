@@ -8,7 +8,7 @@
   "private":true,
   "license": "MIT",
   "scripts": {
-    "develop-drupal": "yarn workspace gatsby-theme-pantheon-drupal develop",
+    "develop-drupal": "yarn workspace gatsby-starter-drupal develop",
     "develop-wordpress": "yarn workspace gatsby-theme-pantheon-wordpress develop",
     "develop-dark": "yarn workspace gatsby-starter-dark-theme develop",
     "develop-shadow": "yarn workspace gatsby-starter-shadowing develop"
