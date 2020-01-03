@@ -8,6 +8,8 @@
   "private":true,
   "license": "MIT",
   "scripts": {
+    "drupal-develop": "yarn workspace gatsby-starter-drupal develop",
+    "drupal-prod": "yarn workspace gatsby-starter-drupal build",
     "drupal-auth-develop": "yarn workspace gatsby-starter-drupal node auth.js development",
     "drupal-auth-prod": "yarn workspace gatsby-starter-drupal node auth.js production",
     "wordpress-develop": "yarn workspace gatsby-starter-wordpress develop",
