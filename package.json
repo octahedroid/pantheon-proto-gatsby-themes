@@ -10,8 +10,8 @@
   "scripts": {
     "drupal-develop": "yarn workspace gatsby-starter-drupal develop",
     "drupal-build": "yarn workspace gatsby-starter-drupal build",
-    "wordpress-develop": "yarn workspace gatsby-theme-pantheon-wordpress develop",
-    "wordpress-build": "yarn workspace gatsby-theme-pantheon-wordpress build",
+    "wordpress-develop": "yarn workspace gatsby-starter-wordpress develop",
+    "wordpress-build": "yarn workspace gatsby-starter-wordpress build",
     "dark-develop": "yarn workspace gatsby-starter-dark-theme develop",
     "dark-build": "yarn workspace gatsby-starter-dark-theme build",
     "shadow-develop": "yarn workspace gatsby-starter-shadowing develop",
