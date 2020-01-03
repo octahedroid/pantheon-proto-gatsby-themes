@@ -47,16 +47,17 @@ module.exports = ({ themePath = `${__dirname}/theme` }) => {
         postCssPlugins: [tailwindcss(tailwindConfig), require("autoprefixer")],
       },
     },
-    {
-      resolve: "gatsby-plugin-purgecss",
-      options: {
-        tailwind: true,
-        debug: true,
-        purgeOnly: ["src/css/style.css", "src/css/global.css"],
-        whitelistPatterns: [/primary$/, /secondary$/, /accent$/, /lightShade$/, /darkShade$/, /hero$/, /navbar$/, /nabvar$/, /screen$/,  /flex-$/, /w-1$/],
-        whitelistPatternsChildren: [/primary$/, /secondary$/, /accent$/, /lightShade$/, /darkShade$/, /hero$/, /navbar$/, /nabvar$/, /screen$/,  /flex$/, /w-1$/],
-      }
-    },
+    // {
+    //   resolve: "gatsby-plugin-purgecss",
+    //   options: {
+    //     tailwind: true,
+    //     debug: true,
+    //     purgeOnly: ["src/css/style.css", "src/css/global.css"],
+    //     whitelist: ['fixed w-full z-30 h-nabvar top-0 text-white bg-white'],
+    //     whitelistPatterns: [/primary$/, /secondary$/, /accent$/, /lightShade$/, /darkShade$/, /hero$/, /navbar$/, /nabvar$/, /screen$/,  /flex-$/, /w-1$/],
+    //     whitelistPatternsChildren: [/primary$/, /secondary$/, /accent$/, /lightShade$/, /darkShade$/, /hero$/, /navbar$/, /nabvar$/, /screen$/,  /flex$/, /w-1$/],
+    //   }
+    // },
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {

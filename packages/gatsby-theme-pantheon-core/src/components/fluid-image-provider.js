@@ -6,6 +6,7 @@ import _find from "lodash/find";
 import BackgroundImage from "gatsby-background-image";
 
 const FluidImageProvider = ({ src, className, asBackground, children }) => {
+  const isExternal = src.startsWith("http");
   const data = useStaticQuery(graphql`
     query {
       allImageSharp {
@@ -25,10 +26,11 @@ const FluidImageProvider = ({ src, className, asBackground, children }) => {
   );
   return (
     <>
-      {image && !asBackground && (
+      {isExternal && src && <img className={className} src={src} />}
+      {!isExternal && image && !asBackground && (
         <Img className={className} fluid={image.fluid} />
       )}
-      {asBackground && (
+      {!isExternal && asBackground && (
         <BackgroundImage className={className} fluid={image.fluid}>
           {children}
         </BackgroundImage>
