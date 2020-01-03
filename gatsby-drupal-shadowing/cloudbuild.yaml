@@ -1,0 +1,32 @@
+steps:
+  - name: 'node:10-jessie'
+    args: ['yarn', 'install']
+
+  - name: 'node:10-jessie'
+    entrypoint: "bash"
+    args: 
+      - '-c'
+      - 'touch .env.production && echo "DRUPAL_TOKEN=..." >> .env.production'
+    dir: '$_PATH'
+  
+  - name: 'node:10-jessie'
+    args: ['yarn', 'shadow-auth-prod']
+    env:
+    - DRUPAL_URL=$_DRUPAL_URL
+    - DRUPAL_AUTH_CLIENT_ID=$_DRUPAL_AUTH_CLIENT_ID
+    - GATSBY_URL=$_GATSBY_URL
+    - ENABLE_GATSBY_REFRESH_ENDPOINT=$_ENABLE_GATSBY_REFRESH_ENDPOINT
+
+  - name: 'node:10-jessie'
+    args: ['yarn', 'shadow-build']
+    env:
+    - DRUPAL_URL=$_DRUPAL_URL
+    - DRUPAL_AUTH_CLIENT_ID=$_DRUPAL_AUTH_CLIENT_ID
+    - GATSBY_URL=$_GATSBY_URL
+    - ENABLE_GATSBY_REFRESH_ENDPOINT=$_ENABLE_GATSBY_REFRESH_ENDPOINT
+  
+  - name: 'gcr.io/$PROJECT_ID/firebase'
+    args: ['deploy', '--only', 'hosting:$_FIREBASE_TARGET', '--token', '$_FIREBASE_TOKEN']
+      
+
+    
