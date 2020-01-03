@@ -1,5 +1,5 @@
 import React from 'react';
-import Article from '../templates/article';
+import Article from 'gatsby-theme-pantheon-wordpress/src/templates/article';
 const testArticle = () => {
   return (
     <Article />
