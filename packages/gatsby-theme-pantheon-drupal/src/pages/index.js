@@ -14,8 +14,19 @@ export default () => {
             entityUrl {
               path
             }
+            entityCreated(format: "M d, yy")
             ... on Drupal_Node {
               title
+            }
+            ... on Drupal_NodeArticle {
+              body {
+                processed
+              }
+              fieldFeaturedImage {
+                entity {
+                  ...MediaImage
+                }
+              }
             }
           }
         }
@@ -32,11 +43,10 @@ export default () => {
       <Layout.Container flex >
       {articles && articles.map(article=>(
         <Card className="w-full lg:w-1/3">
-          <Card.Intro>Intro</Card.Intro>
-          <Card.Image name={`hero.png`}/>
-          <div>Image...</div>
+          <Card.Intro>{article.entityCreated}</Card.Intro>
+          <Card.Image name={article.fieldFeaturedImage.entity.gatsbyImageFile.childImageSharp.fluid.originalName}/>
           <Card.Title>{article.title}</Card.Title>
-          <Card.Text>Text</Card.Text>
+          <Card.Text>{article.body.processed}</Card.Text>
           <Card.Link to={article.entityUrl.path}>Read more...</Card.Link>
         </Card>
       ))}
