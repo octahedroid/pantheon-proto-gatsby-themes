@@ -13,7 +13,7 @@
     },
     {
       "target": "shadowing",
-      "public": "gatsby-shadowing/public",
+      "public": "gatsby-drupal-shadowing/public",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
