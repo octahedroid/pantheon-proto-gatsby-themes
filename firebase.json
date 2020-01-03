@@ -1,0 +1,26 @@
+{
+  "hosting": [
+    {
+      "target": "drupal-dark",
+      "public": "gatsby-drupal-dark/public",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "drupal-shadowing",
+      "public": "gatsby-shadowing/public",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

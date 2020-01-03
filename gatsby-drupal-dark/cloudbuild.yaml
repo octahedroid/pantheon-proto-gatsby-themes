@@ -1,0 +1,27 @@
+steps:
+  - name: 'node:10-jessie'
+    args: ['yarn', 'install']
+
+  - name: 'node:10-jessie'
+    args: ['yarn', 'dark-build']
+  
+  - name: 'gcr.io/$PROJECT_ID/firebase'
+    args: ['deploy', '--only', 'hosting:drupal-dark', '--token', '$_FIREBASE_TOKEN']
+
+
+  # - name: 'gcr.io/cloud-builders/gsutil'
+  #   entrypoint: "bash"
+  #   args: ["-c", "gsutil mb gs://drupal-dark.static.artifactor.io || exit 0"]
+
+  # - name: 'gcr.io/cloud-builders/gsutil'
+  #   args: ['defacl', 'ch', '-u', 'AllUsers:READER', 'gs://drupal-dark.static.artifactor.io']
+
+  # - name: 'gcr.io/cloud-builders/gsutil'
+  #   args: ['-m', 'rsync', '-r', '-c', '-d', '.', 'gs://drupal-dark.static.artifactor.io']
+  #   dir: 'gatsby-drupal-dark/public'
+
+  # - name: 'gcr.io/cloud-builders/gsutil'
+  #   args: ['web', 'set', '-m', 'index.html', '-e', '404.html', 'gs://drupal-dark.static.artifactor.io']
+  
+
+    

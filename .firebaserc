@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "webops-prototypes"
+  },
+  "targets": {
+    "webops-prototypes": {
+      "hosting": {
+        "drupal-dark": [
+          "gatsby-drupal-dark/public"
+        ]
+      }
+    }
+  }
+}
