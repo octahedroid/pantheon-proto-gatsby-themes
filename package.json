@@ -16,7 +16,7 @@
     "wordpress-build": "yarn workspace gatsby-starter-wordpress build",
     "dark-develop": "yarn workspace gatsby-starter-dark-theme develop",
     "dark-build": "yarn workspace gatsby-starter-dark-theme build",
-    "dark-auth-develop": "yarn gatsby-starter-dark-theme node auth.js development",
+    "dark-auth-develop": "yarn workspace gatsby-starter-dark-theme node auth.js development",
     "dark-auth-prod": "yarn workspace gatsby-starter-dark-theme node auth.js production",
     "shadow-develop": "yarn workspace gatsby-starter-shadowing develop",
     "shadow-build": "yarn workspace gatsby-starter-shadowing build",

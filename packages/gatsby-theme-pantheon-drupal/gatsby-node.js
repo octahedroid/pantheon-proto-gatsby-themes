@@ -21,21 +21,18 @@ exports.createPages = ({ graphql, actions }) => {
       throw result.errors;
     }
 
-    // Create pages.
+    // Create articles.
     const articles = result.data.drupal.articles.entities;
     articles.forEach(article => {
-
-      console.info(article);
-
-      // createPage({
-      //   path: page.entityUrl.path,
-      //   component: path.resolve(`./src/templates/article.js`),
-      //   context: {
-      //     id: page.id,
-      //     uuid: page.uuid,
-      //     slug: page.entityUrl.path,
-      //   }
-      // });
+      createPage({
+        path: article.entityUrl.path,
+        component: path.resolve(__dirname + '/src/templates/article.js'),
+        context: {
+          id: article.id,
+          uuid: article.uuid,
+          slug: article.entityUrl.path,
+        }
+      });
     });
 
   });
