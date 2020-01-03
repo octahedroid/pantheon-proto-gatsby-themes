@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "target": "drupal-dark",
+      "target": "dark",
       "public": "gatsby-drupal-dark/public",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
@@ -12,8 +12,19 @@
       ]
     },
     {
-      "target": "drupal-shadowing",
+      "target": "shadowing",
       "public": "gatsby-shadowing/public",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "drupal",
+      "public": "gatsby-drupal/public",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {

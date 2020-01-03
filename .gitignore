@@ -14,5 +14,6 @@ public
 now.json
 deploy.js
 
+.firebase
 .env.development
 .env.production

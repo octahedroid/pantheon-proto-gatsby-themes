@@ -5,8 +5,14 @@
   "targets": {
     "webops-prototypes": {
       "hosting": {
-        "drupal-dark": [
-          "gatsby-drupal-dark/public"
+        "dark": [
+          "drupal-dark"
+        ],
+        "drupal": [
+          "drupal-static"
+        ],
+        "shadowing": [
+          "drupal-shadowing"
         ]
       }
     }
