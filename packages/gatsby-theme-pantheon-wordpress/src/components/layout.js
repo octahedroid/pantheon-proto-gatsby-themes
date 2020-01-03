@@ -54,7 +54,7 @@ function Layout({ children, title }) {
         <SEO title={title} />
         <Header scrolled={scrolledMenu}>
           <Header.Branding>
-            <FaHandsHelping className="mr-2" /> WOrdPress Pantheon
+            <FaHandsHelping className="mr-2" /> WordPress Pantheon
           </Header.Branding>
           <Header.Navbar handleShowSidebar={handleShowSidebar}>
             {mainMenu &&
