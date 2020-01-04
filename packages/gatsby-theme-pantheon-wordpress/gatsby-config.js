@@ -33,7 +33,7 @@ module.exports = ({ themePath = `${__dirname}/theme` }) => {
           // HTTP headers
           headers: {
             // Learn about environment variables: https://gatsby.dev/env-vars
-            Authorization: `Bearer ${process.env.WORDPRESS_TOKEN}`
+            Authorization: `Basic ${process.env.WORDPRESS_TOKEN}`
           },
         }
       }
