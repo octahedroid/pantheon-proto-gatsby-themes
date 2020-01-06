@@ -1,33 +1,26 @@
 /** @TODO move code to a plugin */
+const parser = require('@wordpress/block-serialization-default-parser');
+const parse5 = require('parse5');
 
-// const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
-
-// exports.createResolvers = (
-//   {
-//     actions,
-//     cache,
-//     createNodeId,
-//     createResolvers,
-//     store,
-//     reporter,
-//   },
-// ) => {
-//   const { createNode } = actions
-//   createResolvers({
-//     Wordpress_MediaItem: {
-//       gatsbyImageFile: {
-//         type: `File`,
-//         resolve(source, args, context, info) {
-//           return createRemoteFileNode({
-//             url: source.mediaItemUrl,
-//             store,
-//             cache,
-//             createNode,
-//             createNodeId,
-//             reporter,
-//           })
-//         },
-//       },
-//     },
-//   })
-// }
+exports.createResolvers = (
+  {
+    actions,
+    cache,
+    createNodeId,
+    createResolvers,
+    store,
+    reporter,
+  },
+) => {
+  const { createNode } = actions
+  createResolvers({
+    Wordpress_Post: {
+      gutenbergBlocks: {
+        type: `JSON`,
+        resolve(source, args, context, info) {
+          return parser.parse( source.content );
+        },
+      }
+    },
+  })
+}
