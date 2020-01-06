@@ -56,7 +56,7 @@ exports.createPages = ({ graphql, actions }) => {
     const articles = result.data.wordpress.posts.nodes;
     articles.forEach(article => {
 
-      console.info(article);
+      // console.info(article);
 
       createPage({
         path: `/${article.slug}`,
