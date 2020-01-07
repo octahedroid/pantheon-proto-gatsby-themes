@@ -35,7 +35,7 @@ steps:
     - '--key=resources-$_PATH'
 
   - name: 'node:10-jessie-slim'
-    args: ['yarn', 'drupal-prod']
+    args: ['yarn', 'drupal-build']
     env:
     - DRUPAL_URL=$_DRUPAL_URL
     - DRUPAL_AUTH_CLIENT_ID=$_DRUPAL_AUTH_CLIENT_ID
