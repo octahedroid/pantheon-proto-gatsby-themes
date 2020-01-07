@@ -13,12 +13,10 @@ const mainMenu = [
   {
     name: "Home",
     to: "/",
-    active: true
   },
   {
     name: "About",
     to: "/about",
-    active: false
   },
 ];
 
