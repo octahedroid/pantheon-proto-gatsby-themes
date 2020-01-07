@@ -6,13 +6,10 @@
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby site with Drupal`,
-    description: `Gatsby site with Drupal`,
+    title: `Drupal Dark mode`,
+    description: `Gatsby implementation using dark mode with Drupal`,
     author: `@octahedroid`,
     github: `https://github.com/octahedroid`,
-    blog: `/#`,
-    product: `/#`,
-    docs: `/#`,
     siteUrl: 'http://example.com'
   },
   plugins: [

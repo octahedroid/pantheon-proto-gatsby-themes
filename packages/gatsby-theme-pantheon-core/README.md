@@ -95,7 +95,7 @@ const myTheme = {
     },
   }
 }
-// console.log(myTheme);
+
 module.exports = myTheme;
 ```
 

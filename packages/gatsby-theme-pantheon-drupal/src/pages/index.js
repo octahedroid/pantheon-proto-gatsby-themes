@@ -31,20 +31,24 @@ export default () => {
           }
         }
       }
+      site {
+        siteMetadata {
+          title
+        }
+      }
     }
   `)
 
-  console.log(data)
-
   const articles = data.drupal.articles.entities;
+  const sitename = data.site.siteMetadata.title;
 
   return (
-    <Layout title="Octahedroid starter">
+    <Layout title="Drupal Posts" sitename={ sitename }>
       <Layout.Container flex >
       {articles && articles.map(article=>(
         <Card className="w-full lg:w-1/3">
           <Card.Intro>{article.entityCreated}</Card.Intro>
-          <Card.Image name={article.fieldFeaturedImage.entity.gatsbyImageFile.childImageSharp.fluid.originalName}/>
+          <Card.Image to={article.entityUrl.path} name={article.fieldFeaturedImage.entity.gatsbyImageFile.childImageSharp.fluid.originalName}/>
           <Card.Title>{article.title}</Card.Title>
           <Card.Text>{article.body.processed}</Card.Text>
           <Card.Link to={article.entityUrl.path}>Read more...</Card.Link>

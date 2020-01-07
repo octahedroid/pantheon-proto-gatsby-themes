@@ -20,5 +20,5 @@ const myTheme = {
     hero: '700px'
   },
 }
-console.log(myTheme);
+
 module.exports = myTheme;

@@ -13,6 +13,7 @@ import { componentResolver } from '../utils/component-resolver';
 const ArticleTemplate = props => {
 
   const article = props.data.drupal.article;
+  const sitename = props.data.site.siteMetadata.title;
   const contentComponents = componentResolver(article.fieldContent);
   let tags = [];
   {article.fieldTags && (
@@ -22,9 +23,9 @@ const ArticleTemplate = props => {
   )}
 
   return (
-    <Layout>
+    <Layout sitename={ sitename }>
       <SEO
-        title="Pantheon Drupal"
+        title={ article.title }
         keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
       />
       <Layout.Container>
@@ -81,6 +82,11 @@ export const pageQuery = graphql`
           }
         }
       }
-    } 
+    }
+    site {
+      siteMetadata {
+        title
+      }
+    }
   }
 `

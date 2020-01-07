@@ -9,11 +9,13 @@ import Tags from "gatsby-theme-pantheon-core/src/components/tags";
 import { componentResolver } from "../utils/component-resolver";
 
 const ArticleTemplate = props => {
+
   const { post } = props.data ? props.data.wordpress : {};
   const contentComponents = componentResolver(post.gutenbergBlocks);
-  console.log(post.terms);
+  const sitename = props.data.site.siteMetadata.title;
+
   return (
-    <Layout>
+    <Layout sitename={ sitename }>
       <SEO
         title={post.title}
         keywords={[post.slug, `gatsby`, `tailwind`, `react`, `tailwindcss`]}
@@ -52,6 +54,11 @@ export const pageQuery = graphql`
             slug
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        title
       }
     }
   }

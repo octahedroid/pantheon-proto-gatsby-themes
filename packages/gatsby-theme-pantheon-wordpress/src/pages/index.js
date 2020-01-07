@@ -21,16 +21,23 @@ function IndexPage() {
           }
         }
       }
+      site {
+        siteMetadata {
+          title
+        }
+      }
     }
   `)
-  console.log(data.wordpress.posts.nodes);
+
+  const sitename = data.site.siteMetadata.title;
+
   return (
-    <Layout title="WordPress Posts">
+    <Layout title="WordPress Posts" sitename={ sitename }>
       <Layout.Container flex >
       {data.wordpress.posts.nodes && data.wordpress.posts.nodes.map(post=>(
         <Card className="w-full lg:w-1/3">
           <Card.Intro>{post.meta}</Card.Intro>
-          { post.featuredImage && <Card.Image name={post.featuredImage.mediaItemUrl}/> }
+          { post.featuredImage && <Card.Image to={`/${post.slug}`} name={post.featuredImage.mediaItemUrl}/> }
           <Card.Title>{post.title}</Card.Title>
           <Card.Text><div dangerouslySetInnerHTML={{__html:post.excerpt}}></div></Card.Text>
           <Card.Link to={`/${post.slug}`}>Read more...</Card.Link>
