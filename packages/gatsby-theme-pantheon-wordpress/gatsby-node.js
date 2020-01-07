@@ -1,10 +1,10 @@
 const path = require("path");
-/** @TODO move code to a plugin */
-
 const gutenbergParser = require('@wordpress/block-serialization-default-parser');
 const html2json = require('html2json').html2json;
 const _isNil = require('lodash/isNil')
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
+
+const { format } = require('date-fns');
 
 exports.createResolvers = (
   {
@@ -55,6 +55,12 @@ exports.createResolvers = (
           })
           return blocks;
         },
+      },
+      date_formatted: {
+        type: `String`,
+        resolve(source, args, context, info) {
+          return format(new Date(source.date), "MMM dd, yyyy");
+        }
       }
     },
   })
@@ -80,17 +86,14 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
     // Create pages.
-    const articles = result.data.wordpress.posts.nodes;
-    articles.forEach(article => {
-
-      // console.info(article);
-
+    const posts = result.data.wordpress.posts.nodes;
+    posts.forEach(post => {
       createPage({
-        path: `/${article.slug}`,
+        path: `/${post.slug}`,
         component: path.resolve(__dirname+'/src/templates/article.js'),
         context: {
-          id: article.id,
-          slug: article.slug,
+          id: post.id,
+          slug: post.slug,
         }
       });
     });
