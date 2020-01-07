@@ -39,8 +39,6 @@ export default () => {
     }
   `)
 
-  console.log(data)
-
   const articles = data.drupal.articles.entities;
   const sitename = data.site.siteMetadata.title;
 
