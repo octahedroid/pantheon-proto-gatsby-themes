@@ -7,7 +7,7 @@ import Title from "gatsby-theme-pantheon-core/src/components/title";
 import Paragraph from "gatsby-theme-pantheon-core/src/components/paragraph";
 import FluidImage from "gatsby-theme-pantheon-core/src/components/fluid-image-provider";
 
-export const componentResolver = (data, preview = false) => {
+export const componentResolver = (data, mediaItems) => {
   const components = [];
   data.forEach((block) => {
 
@@ -37,9 +37,7 @@ export const componentResolver = (data, preview = false) => {
     }
 
     if (block.blockName === `core/media-text`) {
-
-      const image = block.attrs.mediaId
-      // const title = _find(_find(block.innerBlocks, node => node.blockName === 'core/heading').innerHTML.child, tag => tag.tag==='h2').child[0]
+      const media =  _find(mediaItems.nodes, mediaItem => mediaItem.mediaItemId === block.attrs.mediaId );
       const paragraphs = [];
       block.innerBlocks.forEach( block => {
         const text = _find(block.innerHTML.child, tag => tag.tag==='p').child[0]
@@ -48,10 +46,9 @@ export const componentResolver = (data, preview = false) => {
 
       components.push(<MediaItem reverse={block.attrs.mediaPosition==='right'}>
         <MediaItem.Column image>
-          <MediaItem.Image name="hero.png" />
+          {media && <MediaItem.Image image={media.gatsbyImageFile.childImageSharp} /> }
         </MediaItem.Column>
         <MediaItem.Column>
-          {/* <MediaItem.Title>{title.text}</MediaItem.Title> */}
           {paragraphs}
         </MediaItem.Column>
       </MediaItem>);
