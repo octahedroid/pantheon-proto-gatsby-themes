@@ -31,7 +31,7 @@ const ArticleTemplate = props => {
           contentComponents.map((item, i) => {
             return <React.Fragment key={i}>{item}</React.Fragment>;
           })}
-        <Tags tags={post.terms.map(term=>term.name)} />
+        {post.tags.nodes.length > 0 && <Tags tags={post.tags.nodes.map(tag=>tag.name)} /> }
       </Layout.Container>
     </Layout>
   );
@@ -49,10 +49,9 @@ export const pageQuery = graphql`
         date_formatted
         content(format: RAW)
         gutenbergBlocks
-        terms {
-          ... on Wordpress_Tag {
+        tags {
+          nodes {
             name
-            slug
           }
         }
       }
