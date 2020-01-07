@@ -18,7 +18,14 @@ const Card = props => {
 };
 
 Card.Intro = props => <IntroText>{props.children}</IntroText>;
-Card.Image = props => <ImageProvider src={props.name} />;
+Card.Image = props => (
+  <Link
+    to={props.to}
+    className="text-2xl text-primary no-underline hover:underline"
+  >
+    <ImageProvider src={props.name} />
+  </Link>
+);
 Card.Title = props => (
   <Title as="h3" className="font-alternative mb-3">
     {props.children}

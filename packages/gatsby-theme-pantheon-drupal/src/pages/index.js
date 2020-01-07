@@ -44,7 +44,7 @@ export default () => {
       {articles && articles.map(article=>(
         <Card className="w-full lg:w-1/3">
           <Card.Intro>{article.entityCreated}</Card.Intro>
-          <Card.Image name={article.fieldFeaturedImage.entity.gatsbyImageFile.childImageSharp.fluid.originalName}/>
+          <Card.Image to={article.entityUrl.path} name={article.fieldFeaturedImage.entity.gatsbyImageFile.childImageSharp.fluid.originalName}/>
           <Card.Title>{article.title}</Card.Title>
           <Card.Text>{article.body.processed}</Card.Text>
           <Card.Link to={article.entityUrl.path}>Read more...</Card.Link>
