@@ -35,7 +35,6 @@ module.exports = ({ themePath = `${__dirname}/theme` }) => {
           },
         },
       },
-      "gatsby-source-drupal-graphql"
     ],
   };
 }

@@ -25,6 +25,7 @@ function IndexPage() {
             }
             slug
             date
+            date_formatted
           }
         }
       }
@@ -43,7 +44,7 @@ function IndexPage() {
       <Layout.Container flex >
       {data.wordpress.posts.nodes && data.wordpress.posts.nodes.map(post=>(
         <Card className="w-full lg:w-1/3">
-          <Card.Intro>{post.meta}</Card.Intro>
+          <Card.Intro>{post.date_formatted}</Card.Intro>
           { post.featuredImage && <Card.Image to={`/${post.slug}`} image={post.featuredImage.gatsbyImageFile.childImageSharp}/> }
           <Card.Title>{post.title}</Card.Title>
           <Card.Text><div dangerouslySetInnerHTML={{__html:post.excerpt}}></div></Card.Text>

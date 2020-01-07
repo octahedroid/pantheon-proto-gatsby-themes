@@ -22,7 +22,7 @@ const ArticleTemplate = props => {
       />
       <Layout.Container>
         <PageTitle>
-          <PageTitle.Intro>{post.date}</PageTitle.Intro>
+          <PageTitle.Intro>{post.date_formatted}</PageTitle.Intro>
           <PageTitle.Title>{post.title}</PageTitle.Title>
         </PageTitle>
         <hr className="border-b-2 mx-auto w-2/3 border-gray-200 block h-1" />
@@ -46,6 +46,7 @@ export const pageQuery = graphql`
         title
         slug
         date
+        date_formatted
         content(format: RAW)
         gutenbergBlocks
         terms {
