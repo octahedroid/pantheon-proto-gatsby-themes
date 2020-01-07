@@ -471,7 +471,7 @@ const styles = {
   p: {
     fontSize: 'xl',
     color: 'body',
-    mb: 4,
+    mb: 2,
   },
   h1: {
     ...heading,
