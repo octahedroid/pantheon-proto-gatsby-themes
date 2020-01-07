@@ -16,13 +16,8 @@ const mainMenu = [
     active: true
   },
   {
-    name: "Page 1",
-    to: "/page-1",
-    active: false
-  },
-  {
-    name: "Page 2",
-    to: "/page-2",
+    name: "Contact us",
+    to: "/contact-us",
     active: false
   },
 ];

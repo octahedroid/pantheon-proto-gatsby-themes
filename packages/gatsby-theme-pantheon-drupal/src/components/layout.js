@@ -20,11 +20,6 @@ const mainMenu = [
     to: "/about",
     active: false
   },
-  {
-    name: "Blog",
-    to: "/blog",
-    active: false
-  },
 ];
 
 
