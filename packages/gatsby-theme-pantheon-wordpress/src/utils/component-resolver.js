@@ -1,16 +1,11 @@
-
 import React from 'react';
-import _find from 'lodash/find';
 import MediaItem from "gatsby-theme-pantheon-core/src/components/media-item";
 import Quote from "gatsby-theme-pantheon-core/src/components/quote";
-import Title from "gatsby-theme-pantheon-core/src/components/title";
-import Paragraph from "gatsby-theme-pantheon-core/src/components/paragraph";
-import FluidImage from "gatsby-theme-pantheon-core/src/components/fluid-image-provider";
+import Paragraph from "gatsby-theme-pantheon-core/src/components/paragraph"
 
 export const componentResolver = (data) => {
   const components = [];
   data.forEach((entity) => {
-
     if (entity.__typename.includes(`CoreQuoteBlock`)) {
       components.push(
         <Quote>
@@ -21,11 +16,9 @@ export const componentResolver = (data) => {
         </Quote>
       );
     }
-
     if (entity.__typename.includes(`CoreParagraphBlock`)) {
       components.push(<Paragraph dangerouslySetInnerHTML={{ __html: entity.originalContent }} />);
     }
-
     if (entity.__typename.includes(`CoreMediaTextBlock`)) {
       const media = entity.attributes.gatsbyImageFile;
       const paragraphs = [];
@@ -36,7 +29,6 @@ export const componentResolver = (data) => {
           </MediaItem.Text>
         );
       });
-
       components.push(
         <MediaItem reverse={entity.attributes.mediaPosition==='right'}>
           <MediaItem.Column image>
@@ -48,7 +40,6 @@ export const componentResolver = (data) => {
         </MediaItem>
       );
     }
-
   });
 
   return components;
