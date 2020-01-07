@@ -26,7 +26,7 @@ const mainMenu = [
 // Layout example of how to combine header, footer, mobile-menu & theme-provider in one component
 // and pass props to the nedded components
 // You need to pass your theme file to the ThemeProvider component
-function Layout({ children, title }) {
+function Layout({ children, title, sitename }) {
   const [scrolledMenu, setScrolledMenu] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   useEffect(() => {
@@ -56,9 +56,11 @@ function Layout({ children, title }) {
                 </Header.MenuItem>
               ))}
           </Header.Navbar>
-          <Header.Branding>
-            <FaHandsHelping className="mr-2" /> Pantheon Drupal Shadow
-          </Header.Branding>
+          { sitename &&
+            <Header.Branding>
+              <FaHandsHelping className="mr-2" /> { sitename }
+            </Header.Branding>
+          }
         </Header>
         <MobileMenu
           showSidebar={showSidebar}

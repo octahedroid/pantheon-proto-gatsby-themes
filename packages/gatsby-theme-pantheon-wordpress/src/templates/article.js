@@ -16,8 +16,10 @@ const ArticleTemplate = props => {
 
   const {post} = props.data?props.data.wordpress:{};
   // console.log(post);
+  const sitename = props.data.site.siteMetadata.title;
+
   return (
-    <Layout>
+    <Layout sitename={ sitename }>
       <SEO
         title={post.title}
         keywords={[post.slug, `gatsby`, `tailwind`, `react`, `tailwindcss`]}
@@ -53,6 +55,11 @@ export const pageQuery = graphql`
             slug
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        title
       }
     }
   }

@@ -31,15 +31,21 @@ export default () => {
           }
         }
       }
+      site {
+        siteMetadata {
+          title
+        }
+      }
     }
   `)
 
   console.log(data)
 
   const articles = data.drupal.articles.entities;
+  const sitename = data.site.siteMetadata.title;
 
   return (
-    <Layout title="Octahedroid starter">
+    <Layout title="Drupal Posts" sitename={ sitename }>
       <Layout.Container flex >
       {articles && articles.map(article=>(
         <Card className="w-full lg:w-1/3">

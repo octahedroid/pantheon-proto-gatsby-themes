@@ -21,11 +21,18 @@ function IndexPage() {
           }
         }
       }
+      site {
+        siteMetadata {
+          title
+        }
+      }
     }
   `)
-  console.log(data.wordpress.posts.nodes);
+
+  const sitename = data.site.siteMetadata.title;
+
   return (
-    <Layout title="WordPress Posts">
+    <Layout title="WordPress Posts" sitename={ sitename }>
       <Layout.Container flex >
       {data.wordpress.posts.nodes && data.wordpress.posts.nodes.map(post=>(
         <Card className="w-full lg:w-1/3">

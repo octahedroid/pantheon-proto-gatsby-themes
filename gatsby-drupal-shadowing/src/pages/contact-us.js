@@ -1,13 +1,16 @@
 import React from "react";
+import { graphql } from 'gatsby';
 
 import Layout from "gatsby-theme-pantheon-drupal/src/components/layout";
 import SEO from "gatsby-theme-pantheon-core/src/components/seo";
 
 import PageTitle from "gatsby-theme-pantheon-core/src/components/page-title";
 
-function ContactPage() {
+const ContactPage = props => {
+  const sitename = props.data.site.siteMetadata.title;
+
   return (
-    <Layout>
+    <Layout sitename={ sitename }>
       <SEO title="Contact us" />
 
       <Layout.Container>
@@ -24,6 +27,16 @@ function ContactPage() {
       </Layout.Container>
     </Layout>
   );
-}
+};
 
 export default ContactPage;
+
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`

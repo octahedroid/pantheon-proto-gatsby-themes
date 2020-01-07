@@ -1,13 +1,16 @@
 import React from "react";
+import { graphql } from 'gatsby';
 
 import Layout from "gatsby-theme-pantheon-drupal/src/components/layout";
 import SEO from "gatsby-theme-pantheon-core/src/components/seo";
 
 import PageTitle from "gatsby-theme-pantheon-core/src/components/page-title";
 
-function AboutPage() {
+const AboutPage = props => {
+  const sitename = props.data.site.siteMetadata.title;
+
   return (
-    <Layout>
+    <Layout sitename={ sitename }>
       <SEO title="About us" />
 
       <Layout.Container>
@@ -24,6 +27,16 @@ function AboutPage() {
       </Layout.Container>
     </Layout>
   );
-}
+};
 
 export default AboutPage;
+
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
