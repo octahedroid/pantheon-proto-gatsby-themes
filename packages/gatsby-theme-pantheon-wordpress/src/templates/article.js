@@ -10,8 +10,8 @@ import { componentResolver } from "../utils/component-resolver";
 
 const ArticleTemplate = props => {
 
-  const { post, mediaItems } = props.data ? props.data.wordpress : {};
-  const contentComponents = componentResolver(post.gutenbergBlocks, mediaItems);
+  const { post } = props.data ? props.data.wordpress : {};
+  const contentComponents = componentResolver(post.blocks);
   const sitename = props.data.site.siteMetadata.title;
 
   return (
@@ -47,31 +47,18 @@ export const pageQuery = graphql`
         slug
         date
         date_formatted
-        content(format: RAW)
-        gutenbergBlocks
+        blocks {
+          __typename
+          ...CoreMediaTextBlock
+          ...CoreParagraphBlock
+          ...CoreQuoteBlock
+        }
         tags {
           nodes {
             name
           }
         }
       }
-
-      mediaItems {
-        nodes {
-          mediaItemId
-          mediaItemUrl
-          gatsbyImageFile {
-            id
-            childImageSharp {
-              fluid {
-                src
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
-
     }
     site {
       siteMetadata {
