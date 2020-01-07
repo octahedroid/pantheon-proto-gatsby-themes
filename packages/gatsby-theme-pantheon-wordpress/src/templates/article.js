@@ -10,8 +10,8 @@ import { componentResolver } from "../utils/component-resolver";
 
 const ArticleTemplate = props => {
 
-  const { post } = props.data ? props.data.wordpress : {};
-  const contentComponents = componentResolver(post.gutenbergBlocks);
+  const { post, mediaItems } = props.data ? props.data.wordpress : {};
+  const contentComponents = componentResolver(post.gutenbergBlocks, mediaItems);
   const sitename = props.data.site.siteMetadata.title;
 
   return (
@@ -55,6 +55,23 @@ export const pageQuery = graphql`
           }
         }
       }
+
+      mediaItems {
+        nodes {
+          mediaItemId
+          mediaItemUrl
+          gatsbyImageFile {
+            id
+            childImageSharp {
+              fluid {
+                src
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+
     }
     site {
       siteMetadata {

@@ -3,8 +3,11 @@ const gutenbergParser = require('@wordpress/block-serialization-default-parser')
 const html2json = require('html2json').html2json;
 const _isNil = require('lodash/isNil')
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
-
 const { format } = require('date-fns');
+
+const innerHTML = (block) => {
+  return _isNil(block.innerHTML) ? block.innerHTML : html2json(block.innerHTML);
+}
 
 exports.createResolvers = (
   {
@@ -44,15 +47,19 @@ exports.createResolvers = (
             if(!block.blockName){
               return block;
             }
-            if(block.innerBlocks.length&&block.innerBlocks.length>0){
+
+            if(block.innerBlocks.length && block.innerBlocks.length>0){
               block.innerBlocks = block.innerBlocks.map(innerBlock=>{
-                innerBlock.innerHTML = _isNil(innerBlock.innerHTML) ? innerBlock.innerHTML : html2json(innerBlock.innerHTML)
+                innerBlock.innerHTML = innerHTML(innerBlock)
                 return innerBlock;
               })
             }
-            block.innerHTML = _isNil(block.innerHTML) ? block.innerHTML : html2json(block.innerHTML)
+
+            block.innerHTML = innerHTML(block)
+
             return block
           })
+
           return blocks;
         },
       },
@@ -65,7 +72,6 @@ exports.createResolvers = (
     },
   })
 }
-
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
