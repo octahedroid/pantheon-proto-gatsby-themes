@@ -39,15 +39,20 @@ export const componentResolver = (data, preview = false) => {
     if (block.blockName === `core/media-text`) {
 
       const image = block.attrs.mediaId
-      const title = _find(_find(block.innerBlocks, node => node.blockName === 'core/heading').innerHTML.child, tag => tag.tag==='h2').child[0]
-      const text = _find(_find(block.innerBlocks, node => node.blockName === 'core/paragraph').innerHTML.child, tag => tag.tag==='p').child[0]
+      // const title = _find(_find(block.innerBlocks, node => node.blockName === 'core/heading').innerHTML.child, tag => tag.tag==='h2').child[0]
+      const paragraphs = [];
+      block.innerBlocks.forEach( block => {
+        const text = _find(block.innerHTML.child, tag => tag.tag==='p').child[0]
+        paragraphs.push(<MediaItem.Text><>{text.text}</></MediaItem.Text>);
+      });
+
       components.push(<MediaItem reverse={block.attrs.mediaPosition==='right'}>
         <MediaItem.Column image>
           <MediaItem.Image name="hero.png" />
         </MediaItem.Column>
         <MediaItem.Column>
-          <MediaItem.Title>{title.text}</MediaItem.Title>
-          <MediaItem.Text>{text.text}</MediaItem.Text>
+          {/* <MediaItem.Title>{title.text}</MediaItem.Title> */}
+          {paragraphs}
         </MediaItem.Column>
       </MediaItem>);
     }
