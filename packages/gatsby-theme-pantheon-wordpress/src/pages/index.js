@@ -15,6 +15,13 @@ function IndexPage() {
             excerpt(format: RENDERED)
             featuredImage {
               mediaItemUrl
+              gatsbyImageFile {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
             }
             slug
             date
@@ -37,7 +44,7 @@ function IndexPage() {
       {data.wordpress.posts.nodes && data.wordpress.posts.nodes.map(post=>(
         <Card className="w-full lg:w-1/3">
           <Card.Intro>{post.meta}</Card.Intro>
-          { post.featuredImage && <Card.Image to={`/${post.slug}`} name={post.featuredImage.mediaItemUrl}/> }
+          { post.featuredImage && <Card.Image to={`/${post.slug}`} image={post.featuredImage.gatsbyImageFile.childImageSharp}/> }
           <Card.Title>{post.title}</Card.Title>
           <Card.Text><div dangerouslySetInnerHTML={{__html:post.excerpt}}></div></Card.Text>
           <Card.Link to={`/${post.slug}`}>Read more...</Card.Link>
