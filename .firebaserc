@@ -13,6 +13,9 @@
         ],
         "shadowing": [
           "drupal-shadowing"
+        ],
+        "wordpress": [
+          "wordpress-static-gatsby"
         ]
       }
     }
