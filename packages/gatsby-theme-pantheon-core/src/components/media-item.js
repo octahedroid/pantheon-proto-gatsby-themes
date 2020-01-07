@@ -23,11 +23,11 @@ const MediaItem = ({reverse, to, children}) => {
 };
 
 MediaItem.Column = props => (<div className={cx("p-3", {
-  'w-3/12': props.image,
-  'w-9/12': !props.image,
+  'w-5/12': props.image,
+  'w-7/12': !props.image,
 })}>{props.children}</div>)
 MediaItem.Image = props => (<FluidImage src={props.name} />)
 MediaItem.Title = props => (<Title as="h5" className="font-bold" color="primary">{props.children}</Title>)
-MediaItem.Text = props => (<Paragraph className="text-md">{props.children}</Paragraph>)
+MediaItem.Text = props => (<Paragraph className="text-md" {...props}>{props.children}</Paragraph>)
 
 export default MediaItem;
