@@ -23,7 +23,8 @@ Card.Image = props => (
     to={props.to}
     className="text-2xl text-primary no-underline hover:underline"
   >
-    <ImageProvider src={props.name} />
+    {props.name && <ImageProvider src={props.name} />}
+    {props.image && <ImageProvider image={props.image} />}
   </Link>
 );
 Card.Title = props => (

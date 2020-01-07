@@ -7,11 +7,6 @@ import IntroText from "./intro-text";
 import Title from "./title";
 import Paragraph from "./paragraph";
 
-// add left right align support
-// add second cta
-// add change image for form
-// add form for cta
-
 const HeroCta = props => {
   return (
     <div className="bg-white py-4 lg:py-2 lg:pb-3 px-3 lg:px-0">
@@ -36,6 +31,11 @@ HeroCta.Column = props => (
     {props.children}
   </div>
 );
-HeroCta.Image = props => <ImageProvider src={props.name} />;
+HeroCta.Image = props => (
+  <>
+    {props.name && <ImageProvider src={props.name} />}
+    {props.image && <ImageProvider image={props.image} />}
+  </>
+)
 
 export default HeroCta;

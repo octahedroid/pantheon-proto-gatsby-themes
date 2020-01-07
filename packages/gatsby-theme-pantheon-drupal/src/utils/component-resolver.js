@@ -13,7 +13,7 @@ export const componentResolver = (data, preview = false) => {
     if (entity.__typename.includes(`ParagraphFeature`)) {
       components.push(<HeroCta>
       <HeroCta.Column imageColumn>
-        <HeroCta.Image name={entity.fieldImage.entity.gatsbyImageFile.childImageSharp.fluid.originalName} />
+        <HeroCta.Image image={entity.fieldImage.entity.gatsbyImageFile.childImageSharp} />
       </HeroCta.Column>
       <HeroCta.Column>
         <HeroCta.Text>
@@ -42,7 +42,7 @@ export const componentResolver = (data, preview = false) => {
       components.push(<MediaItem>
         <MediaItem.Title>{ entity.fieldTitle }</MediaItem.Title>
         <MediaItem.Column image>
-          <MediaItem.Image name={entity.fieldImage.entity.gatsbyImageFile.childImageSharp.fluid.originalName} />
+          <MediaItem.Image image={entity.fieldImage.entity.gatsbyImageFile.childImageSharp} />
         </MediaItem.Column>
         <MediaItem.Column>
           <div dangerouslySetInnerHTML={{ __html: entity.fieldBody.processed }}/>
