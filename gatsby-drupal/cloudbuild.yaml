@@ -1,32 +1,59 @@
 steps:
-  - name: 'node:10-jessie'
+  - name: 'gcr.io/$PROJECT_ID/restore_cache'
+    args:
+    - '--bucket=gs://$_CACHE_BUCKET'
+    - '--key=resources-$(checksum yarn.lock)'
+
+  - name: 'node:10-jessie-slim'
     args: ['yarn', 'install']
 
-  - name: 'node:10-jessie'
+  - name: 'gcr.io/$PROJECT_ID/save_cache'
+    args:
+    - '--bucket=gs://$_CACHE_BUCKET'
+    - '--key=resources-$(checksum yarn.lock)'
+    - '--path=node_modules'
+    - '--no-clobber'
+
+  - name: 'node:10-jessie-slim'
     entrypoint: "bash"
     args: 
       - '-c'
       - 'touch .env.production && echo "DRUPAL_TOKEN=..." >> .env.production'
     dir: '$_PATH'
   
-  - name: 'node:10-jessie'
+  - name: 'node:10-jessie-slim'
     args: ['yarn', 'drupal-auth-prod']
     env:
     - DRUPAL_URL=$_DRUPAL_URL
     - DRUPAL_AUTH_CLIENT_ID=$_DRUPAL_AUTH_CLIENT_ID
     - GATSBY_URL=$_GATSBY_URL
     - ENABLE_GATSBY_REFRESH_ENDPOINT=$_ENABLE_GATSBY_REFRESH_ENDPOINT
+  
+  - name: 'gcr.io/$PROJECT_ID/restore_cache'
+    args:
+    - '--bucket=gs://$_CACHE_BUCKET'
+    - '--key=resources-$_PATH'
 
-  - name: 'node:10-jessie'
+  - name: 'node:10-jessie-slim'
     args: ['yarn', 'drupal-prod']
     env:
     - DRUPAL_URL=$_DRUPAL_URL
     - DRUPAL_AUTH_CLIENT_ID=$_DRUPAL_AUTH_CLIENT_ID
     - GATSBY_URL=$_GATSBY_URL
     - ENABLE_GATSBY_REFRESH_ENDPOINT=$_ENABLE_GATSBY_REFRESH_ENDPOINT
+    - CI=true
+    - GATSBY_CPU_COUNT=8
+
+  - name: 'gcr.io/$PROJECT_ID/save_cache'
+    args:
+    - '--bucket=gs://$_CACHE_BUCKET'
+    - '--key=resources-$_PATH'
+    - '--path=$_PATH/public'
+    - '--path=$_PATH/.cache'
   
   - name: 'gcr.io/$PROJECT_ID/firebase'
     args: ['deploy', '--only', 'hosting:$_FIREBASE_TARGET', '--token', '$_FIREBASE_TOKEN']
       
-
+options:
+  machineType: 'N1_HIGHCPU_8'
     
