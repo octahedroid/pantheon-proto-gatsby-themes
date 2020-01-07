@@ -20,6 +20,7 @@ exports.createResolvers = (
   },
 ) => {
   const { createNode } = actions
+
   createResolvers({
     Wordpress_MediaItem: {
       gatsbyImageFile: {
@@ -36,33 +37,29 @@ exports.createResolvers = (
         },
       },
     },
+    Wordpress_CoreMediaTextBlockAttributes: {
+      gatsbyImageFile: {
+        type: `File`,
+        resolve(source, args, context, info) {
+          if (source.mediaUrl) {
+            return createRemoteFileNode({
+              url: source.mediaUrl,
+              store,
+              cache,
+              createNode,
+              createNodeId,
+              reporter,
+            })
+          }
+          
+          return null;
+        },
+      },
+    },
   })
 
   createResolvers({
     Wordpress_Post: {
-      gutenbergBlocks: {
-        type: `JSON`,
-        resolve(source, args, context, info) {
-          const blocks = gutenbergParser.parse( source.content ).map(block=>{
-            if(!block.blockName){
-              return block;
-            }
-
-            if(block.innerBlocks.length && block.innerBlocks.length>0){
-              block.innerBlocks = block.innerBlocks.map(innerBlock=>{
-                innerBlock.innerHTML = innerHTML(innerBlock)
-                return innerBlock;
-              })
-            }
-
-            block.innerHTML = innerHTML(block)
-
-            return block
-          })
-
-          return blocks;
-        },
-      },
       date_formatted: {
         type: `String`,
         resolve(source, args, context, info) {

@@ -7,51 +7,46 @@ import Title from "gatsby-theme-pantheon-core/src/components/title";
 import Paragraph from "gatsby-theme-pantheon-core/src/components/paragraph";
 import FluidImage from "gatsby-theme-pantheon-core/src/components/fluid-image-provider";
 
-export const componentResolver = (data, mediaItems) => {
+export const componentResolver = (data) => {
   const components = [];
-  data.forEach((block) => {
+  data.forEach((entity) => {
 
-    if (block.blockName === `core/image`) {
-      components.push(<FluidImage src="hero.png" />);
+    if (entity.__typename.includes(`CoreQuoteBlock`)) {
+      components.push(
+        <Quote>
+          <Quote.Text>
+            <Paragraph dangerouslySetInnerHTML={{ __html: entity.attributes.value }} />
+          </Quote.Text>
+          <Quote.Author>{ entity.attributes.citation }</Quote.Author>
+        </Quote>
+      );
     }
 
-    if (block.blockName === `core/quote`) {
-      const node = _find(block.innerHTML.child, node => node.tag === 'blockquote')
-      const text = _find(node.child, node => node.tag === 'p')
-      const author = _find(node.child, node => node.tag === 'cite')
-      components.push(<Quote>
-        <Quote.Text>
-          <p dangerouslySetInnerHTML={{ __html: text.child[0].text }}/>
-        </Quote.Text>
-        <Quote.Author>{ author.child[0].text }</Quote.Author>
-      </Quote>);
+    if (entity.__typename.includes(`CoreParagraphBlock`)) {
+      components.push(<Paragraph dangerouslySetInnerHTML={{ __html: entity.originalContent }} />);
     }
 
-    if (block.blockName === `core/paragraph`) {
-      components.push(<Paragraph dangerouslySetInnerHTML={{ __html: block.innerContent.join() }} />);
-    }
-
-    if (block.blockName === `core/heading`) {
-      const node = _find(block.innerHTML.child, node => node.node === 'element')
-      components.push(<Title as={node.tag}>{node.child[0].text}</Title>);
-    }
-
-    if (block.blockName === `core/media-text`) {
-      const media =  _find(mediaItems.nodes, mediaItem => mediaItem.mediaItemId === block.attrs.mediaId );
+    if (entity.__typename.includes(`CoreMediaTextBlock`)) {
+      const media = entity.attributes.gatsbyImageFile;
       const paragraphs = [];
-      block.innerBlocks.forEach( block => {
-        const text = _find(block.innerHTML.child, tag => tag.tag==='p').child[0]
-        paragraphs.push(<MediaItem.Text><>{text.text}</></MediaItem.Text>);
+      entity.innerBlocks.forEach( block => {
+        paragraphs.push(
+          <MediaItem.Text>
+            <Paragraph dangerouslySetInnerHTML={{ __html: block.originalContent }} />
+          </MediaItem.Text>
+        );
       });
 
-      components.push(<MediaItem reverse={block.attrs.mediaPosition==='right'}>
-        <MediaItem.Column image>
-          {media && <MediaItem.Image image={media.gatsbyImageFile.childImageSharp} /> }
-        </MediaItem.Column>
-        <MediaItem.Column>
-          {paragraphs}
-        </MediaItem.Column>
-      </MediaItem>);
+      components.push(
+        <MediaItem reverse={entity.attributes.mediaPosition==='right'}>
+          <MediaItem.Column image>
+            {media && <MediaItem.Image image={media.childImageSharp} /> }
+          </MediaItem.Column>
+          <MediaItem.Column>
+            {paragraphs}
+          </MediaItem.Column>
+        </MediaItem>
+      );
     }
 
   });
