@@ -12,7 +12,7 @@ steps:
     - '--bucket=gs://$_CACHE_BUCKET'
     - '--key=resources-$(checksum yarn.lock)'
     - '--path=node_modules'
-    - '--no-clobber'
+    # - '--no-clobber'
 
   - name: 'node:8-jessie-slim'
     entrypoint: "bash"
