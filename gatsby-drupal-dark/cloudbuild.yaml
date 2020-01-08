@@ -4,7 +4,7 @@ steps:
     - '--bucket=gs://$_CACHE_BUCKET'
     - '--key=resources-$(checksum yarn.lock)'
     
-  - name: 'node:8-jessie-slim'
+  - name: 'node:10-jessie-slim'
     args: ['yarn', 'install']
 
   - name: 'gcr.io/$PROJECT_ID/save_cache'
@@ -12,16 +12,16 @@ steps:
     - '--bucket=gs://$_CACHE_BUCKET'
     - '--key=resources-$(checksum yarn.lock)'
     - '--path=node_modules'
-    # - '--no-clobber'
+    - '--no-clobber'
 
-  - name: 'node:8-jessie-slim'
+  - name: 'node:10-jessie-slim'
     entrypoint: "bash"
     args: 
       - '-c'
       - 'touch .env.production && echo "DRUPAL_TOKEN=..." >> .env.production'
     dir: '$_PATH'
   
-  - name: 'node:8-jessie-slim'
+  - name: 'node:10-jessie-slim'
     args: ['yarn', 'dark-auth-prod']
     env:
     - DRUPAL_URL=$_DRUPAL_URL
@@ -34,7 +34,7 @@ steps:
     - '--bucket=gs://$_CACHE_BUCKET'
     - '--key=resources-$_PATH'
 
-  - name: 'node:8-jessie-slim'
+  - name: 'node:10-jessie-slim'
     args: ['yarn', 'dark-build']
     env:
     - DRUPAL_URL=$_DRUPAL_URL
