@@ -5,13 +5,20 @@ steps:
     - '--key=resources-$(checksum yarn.lock)'
     
   - name: 'node:10-jessie-slim'
-    args: ['yarn', 'install']
+    args: ['yarn', 'install', '--frozen-lockfile']
 
   - name: 'gcr.io/$PROJECT_ID/save_cache'
     args:
     - '--bucket=gs://$_CACHE_BUCKET'
     - '--key=resources-$(checksum yarn.lock)'
     - '--path=node_modules'
+    - '--path=packages/gatsby-theme-pantheon-core/node_modules'
+    - '--path=packages/gatsby-theme-pantheon-drupal/node_modules'
+    - '--path=packages/gatsby-theme-pantheon-wordpress/node_modules'
+    - '--path=gatsby-drupal/node_modules'
+    - '--path=gatsby-drupal-dark/node_modules'
+    - '--path=gatsby-drupal-shadowing/node_modules'
+    - '--path=gatsby-wordpress/node_modules'
     - '--no-clobber'
   
   - name: 'gcr.io/$PROJECT_ID/restore_cache'
