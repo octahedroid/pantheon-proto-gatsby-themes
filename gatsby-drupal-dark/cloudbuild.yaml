@@ -5,7 +5,7 @@ steps:
     - '--key=resources-$(checksum yarn.lock)'
     
   - name: 'node:10-jessie-slim'
-    args: ['yarn', 'install']
+    args: ['yarn', 'install', '--frozen-lockfile']
 
   - name: 'gcr.io/$PROJECT_ID/save_cache'
     args:
