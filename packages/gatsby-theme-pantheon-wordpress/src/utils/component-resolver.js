@@ -1,4 +1,5 @@
 import React from 'react';
+
 import MediaItem from "gatsby-theme-pantheon-core/src/components/media-item";
 import Quote from "gatsby-theme-pantheon-core/src/components/quote";
 import Paragraph from "gatsby-theme-pantheon-core/src/components/paragraph"

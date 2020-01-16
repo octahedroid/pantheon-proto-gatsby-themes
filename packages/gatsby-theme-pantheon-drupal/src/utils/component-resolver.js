@@ -6,48 +6,56 @@ import Quote from "gatsby-theme-pantheon-core/src/components/quote";
 import HeroCta from "gatsby-theme-pantheon-core/src/components/hero-cta";
 import TextBlock from "gatsby-theme-pantheon-core/src/components/text-block";
 
-export const componentResolver = (data, preview = false) => {
+export const componentResolver = (data) => {
   const components = [];
   data.forEach(({entity}) => {
 
     if (entity.__typename.includes(`ParagraphFeature`)) {
-      components.push(<HeroCta>
-      <HeroCta.Column imageColumn>
-        <HeroCta.Image image={entity.fieldImage.entity.gatsbyImageFile.childImageSharp} />
-      </HeroCta.Column>
-      <HeroCta.Column>
-        <HeroCta.Text>
-          <div dangerouslySetInnerHTML={{ __html: entity.fieldBody.processed }}/>
-        </HeroCta.Text>
-      </HeroCta.Column>
-    </HeroCta>);
+      components.push(
+        <HeroCta>
+          <HeroCta.Column imageColumn>
+            <HeroCta.Image image={entity.fieldImage.entity.gatsbyImageFile.childImageSharp} />
+          </HeroCta.Column>
+          <HeroCta.Column>
+            <HeroCta.Text>
+              <div dangerouslySetInnerHTML={{ __html: entity.fieldBody.processed }}/>
+            </HeroCta.Text>
+          </HeroCta.Column>
+        </HeroCta>
+      );
     }
 
     if (entity.__typename.includes(`ParagraphQuote`)) {
-      components.push(<Quote>
-        <Quote.Text>
-          <div dangerouslySetInnerHTML={{ __html: entity.fieldBody.processed }}/>
-        </Quote.Text>
-        <Quote.Author>{ entity.fieldAuthor }</Quote.Author>
-      </Quote>);
+      components.push(
+        <Quote>
+          <Quote.Text>
+            <div dangerouslySetInnerHTML={{ __html: entity.fieldBody.processed }}/>
+          </Quote.Text>
+          <Quote.Author>{ entity.fieldAuthor }</Quote.Author>
+        </Quote>
+      );
     }
 
     if (entity.__typename.includes(`ParagraphTextContent`)) {
-      components.push(<TextBlock>
-        <div dangerouslySetInnerHTML={{ __html: entity.fieldBody.processed }}/>
-      </TextBlock>);
+      components.push(
+        <TextBlock>
+          <div dangerouslySetInnerHTML={{ __html: entity.fieldBody.processed }}/>
+        </TextBlock>
+      );
     }
 
     if (entity.__typename.includes(`ParagraphTextImage`)) {
-      components.push(<MediaItem>
-        <MediaItem.Title>{ entity.fieldTitle }</MediaItem.Title>
-        <MediaItem.Column image>
-          <MediaItem.Image image={entity.fieldImage.entity.gatsbyImageFile.childImageSharp} />
-        </MediaItem.Column>
-        <MediaItem.Column>
-          <div dangerouslySetInnerHTML={{ __html: entity.fieldBody.processed }}/>
-        </MediaItem.Column>
-      </MediaItem>);
+      components.push(
+        <MediaItem>
+          <MediaItem.Title>{ entity.fieldTitle }</MediaItem.Title>
+          <MediaItem.Column image>
+            <MediaItem.Image image={entity.fieldImage.entity.gatsbyImageFile.childImageSharp} />
+          </MediaItem.Column>
+          <MediaItem.Column>
+            <div dangerouslySetInnerHTML={{ __html: entity.fieldBody.processed }}/>
+          </MediaItem.Column>
+        </MediaItem>
+      );
     }
 
   });

@@ -29,8 +29,12 @@ const ArticleTemplate = props => {
 
         {contentComponents &&
           contentComponents.map((item, i) => {
-            return <React.Fragment key={i}>{item}</React.Fragment>;
-          })}
+            return (
+              <React.Fragment key={i}>
+                {item}
+              </React.Fragment>
+            );
+        })}
         {post.tags.nodes.length > 0 && <Tags tags={post.tags.nodes.map(tag=>tag.name)} /> }
       </Layout.Container>
     </Layout>
