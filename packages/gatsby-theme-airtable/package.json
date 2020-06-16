@@ -1,0 +1,34 @@
+{
+  "name": "gatsby-theme-airtable",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Jairo Rondon <jrondon@octahedroid.com> (@digitalhydra)",
+  "license": "MIT",
+  "scripts": {
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "storybook": "NODE_ENV=production start-storybook -p 6006 --debug-webpack",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "date-fns": "~2.11.0",
+    "gatsby": "^2.20.4",
+    "gatsby-source-airtable": "^2.1.1",
+    "gatsby-theme-pantheon-core": "^1.0.0",
+    "html2json": "^1.0.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "@storybook/addon-actions": "^5.3.17",
+    "@storybook/addon-links": "^5.3.17",
+    "@storybook/addons": "^5.3.17",
+    "@storybook/react": "^5.3.17",
+    "babel-eslint": "10.1.0",
+    "babel-loader": "^8.1.0"
+  }
+}
