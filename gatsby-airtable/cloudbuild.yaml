@@ -1,0 +1,48 @@
+steps:
+  - name: 'gcr.io/$PROJECT_ID/restore_cache'
+    args:
+    - '--bucket=gs://$_CACHE_BUCKET'
+    - '--key=resources-$(checksum yarn.lock)'
+    
+  - name: 'node:10-jessie-slim'
+    args: ['yarn', 'install', '--frozen-lockfile']
+
+  - name: 'gcr.io/$PROJECT_ID/save_cache'
+    args:
+    - '--bucket=gs://$_CACHE_BUCKET'
+    - '--key=resources-$(checksum yarn.lock)'
+    - '--path=node_modules'
+    - '--path=packages/gatsby-theme-pantheon-core/node_modules'
+    - '--path=packages/gatsby-theme-pantheon-drupal/node_modules'
+    - '--path=packages/gatsby-theme-pantheon-wordpress/node_modules'
+    - '--path=gatsby-drupal/node_modules'
+    - '--path=gatsby-drupal-dark/node_modules'
+    - '--path=gatsby-drupal-shadowing/node_modules'
+    - '--path=gatsby-wordpress/node_modules'
+    - '--no-clobber'
+  
+  - name: 'gcr.io/$PROJECT_ID/restore_cache'
+    args:
+    - '--bucket=gs://$_CACHE_BUCKET'
+    - '--key=resources-$_PATH'
+
+  - name: 'node:10-jessie-slim'
+    args: ['yarn', 'wordpress-build']
+    env:
+    - WORDPRESS_GRAPHQL=$_WORDPRESS_GRAPHQL
+    - WORDPRESS_TOKEN=$_WORDPRESS_TOKEN
+    - CI=true
+    - GATSBY_CPU_COUNT=8
+
+  - name: 'gcr.io/$PROJECT_ID/save_cache'
+    args:
+    - '--bucket=gs://$_CACHE_BUCKET'
+    - '--key=resources-$_PATH'
+    - '--path=$_PATH/public'
+    - '--path=$_PATH/.cache'
+  
+  - name: 'gcr.io/$PROJECT_ID/firebase'
+    args: ['deploy', '--only', 'hosting:$_FIREBASE_TARGET', '--token', '$_FIREBASE_TOKEN']
+
+options:
+  machineType: 'N1_HIGHCPU_8'
