@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import cx from 'classnames';
+import cx from "classnames";
 import { Link } from "gatsby";
 import _isString from "lodash/isString";
 import ImageProvider from "./fluid-image-provider";
@@ -8,12 +8,11 @@ import IntroText from "./intro-text";
 import Cta from "./cta";
 import Paragraph from "./paragraph";
 import Title from "./title";
+import Img from "gatsby-image";
 
 const Card = props => {
   return (
-    <div className={cx("p-3 lg:p-4", props.className)}>
-      {props.children}
-    </div>
+    <div className={cx("p-3 lg:p-4", props.className)}>{props.children}</div>
   );
 };
 
@@ -23,8 +22,11 @@ Card.Image = props => (
     to={props.to}
     className="text-2xl text-primary no-underline hover:underline"
   >
-    {props.name && <ImageProvider src={props.name} />}
-    {props.image && <ImageProvider image={props.image} />}
+    <>
+      {/* {props.name && <ImageProvider src={props.name} />}
+      {props.image && <ImageProvider image={props.image} />} */}
+      <Img fixed={props.image.fixed} />
+    </>
   </Link>
 );
 Card.Title = props => (

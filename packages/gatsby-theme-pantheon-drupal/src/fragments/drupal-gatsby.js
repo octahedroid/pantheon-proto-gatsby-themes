@@ -1,5 +1,4 @@
-
-import { graphql } from 'gatsby';
+import { graphql } from "gatsby";
 
 export const MediaImage = graphql`
   fragment MediaImage on Drupal_MediaImage {
@@ -15,10 +14,13 @@ export const MediaImage = graphql`
           originalName
           ...GatsbyImageSharpFluid
         }
+        fixed(width: 300, height: 300) {
+          ...GatsbyImageSharpFixed
+        }
       }
     }
   }
-`
+`;
 
 export const ParagraphFeature = graphql`
   fragment ParagraphFeature on Drupal_ParagraphFeature {
@@ -34,7 +36,7 @@ export const ParagraphFeature = graphql`
       processed
     }
   }
-`
+`;
 
 export const ParagraphQuote = graphql`
   fragment ParagraphQuote on Drupal_ParagraphQuote {
@@ -44,7 +46,7 @@ export const ParagraphQuote = graphql`
       processed
     }
   }
-`
+`;
 
 export const ParagraphTextContent = graphql`
   fragment ParagraphTextContent on Drupal_ParagraphTextContent {
@@ -53,7 +55,7 @@ export const ParagraphTextContent = graphql`
       processed
     }
   }
-`
+`;
 
 export const ParagraphTextImage = graphql`
   fragment ParagraphTextImage on Drupal_ParagraphTextImage {
@@ -69,4 +71,4 @@ export const ParagraphTextImage = graphql`
       processed
     }
   }
-`
+`;

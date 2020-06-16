@@ -1,17 +1,15 @@
 const path = require("path");
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
 
-exports.createResolvers = (
-  {
-    actions,
-    cache,
-    createNodeId,
-    createResolvers,
-    store,
-    reporter,
-  },
-) => {
-  const { createNode } = actions
+exports.createResolvers = ({
+  actions,
+  cache,
+  createNodeId,
+  createResolvers,
+  store,
+  reporter
+}) => {
+  const { createNode } = actions;
   createResolvers({
     Drupal_MediaImage: {
       gatsbyImageFile: {
@@ -23,30 +21,37 @@ exports.createResolvers = (
             cache,
             createNode,
             createNodeId,
-            reporter,
-          })
-        },
-      },
-    },
-  })
-}
+            reporter
+          });
+        }
+      }
+    }
+  });
+};
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   return graphql(`
-  {
-    drupal {
-      articles: nodeQuery(filter: {conditions: [{operator: EQUAL, field: "type", value: ["article"]}]}) {
-        entities {
-          uuid: entityUuid
-          id: entityId
-          entityUrl {
-            path
+    {
+      drupal {
+        articles: nodeQuery(
+          filter: {
+            conditions: [
+              { operator: EQUAL, field: "type", value: ["article"] }
+              { operator: EQUAL, field: "status", value: ["1"] }
+            ]
+          }
+        ) {
+          entities {
+            uuid: entityUuid
+            id: entityId
+            entityUrl {
+              path
+            }
           }
         }
       }
     }
-  }
   `).then(result => {
     if (result.errors) {
       throw result.errors;
@@ -57,15 +62,13 @@ exports.createPages = ({ graphql, actions }) => {
     articles.forEach(article => {
       createPage({
         path: article.entityUrl.path,
-        component: path.resolve(__dirname + '/src/templates/article.js'),
+        component: path.resolve(__dirname + "/src/templates/article.js"),
         context: {
           id: article.id,
           uuid: article.uuid,
-          slug: article.entityUrl.path,
+          slug: article.entityUrl.path
         }
       });
     });
-
   });
 };
-
