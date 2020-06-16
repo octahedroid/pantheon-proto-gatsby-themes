@@ -5,9 +5,10 @@
   "main": "index.js",
   "repository": "git@github.com:octahedroid/pantheon-proto-gatsby-themes.git",
   "author": "Octahedroid",
-  "private":true,
+  "private": true,
   "license": "MIT",
   "scripts": {
+    "airtable-develop": "yarn workspace gatsby-starter-airtable develop",
     "drupal-develop": "yarn workspace gatsby-starter-drupal develop",
     "drupal-build": "yarn workspace gatsby-starter-drupal build",
     "drupal-auth-develop": "yarn workspace gatsby-starter-drupal node auth.js development",
@@ -28,6 +29,7 @@
     "gatsby-drupal-dark",
     "gatsby-drupal-shadowing",
     "gatsby-wordpress",
-    "gatsby-drupal"
+    "gatsby-drupal",
+    "gatsby-airtable"
   ]
 }

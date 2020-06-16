@@ -5,7 +5,13 @@ import Img from "gatsby-image";
 import _find from "lodash/find";
 import BackgroundImage from "gatsby-background-image";
 
-const FluidImageProvider = ({ src, className, asBackground, children, image }) => {
+const FluidImageProvider = ({
+  src,
+  className,
+  asBackground,
+  children,
+  image
+}) => {
   const isExternal = src ? src.startsWith("http") : false;
   if (!image) {
     const data = useStaticQuery(graphql`

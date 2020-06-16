@@ -1,5 +1,4 @@
-
-import { graphql } from 'gatsby';
+import { graphql } from "gatsby";
 
 export const CoreMediaTextBlock = graphql`
   fragment CoreMediaTextBlock on Wordpress_CoreMediaTextBlock {
@@ -11,6 +10,9 @@ export const CoreMediaTextBlock = graphql`
           fluid {
             ...GatsbyImageSharpFluid
           }
+          fixed(width: 300, height: 300) {
+            ...GatsbyImageSharpFixed
+          }
         }
       }
     }
@@ -18,12 +20,12 @@ export const CoreMediaTextBlock = graphql`
       originalContent
     }
   }
-`
+`;
 export const CoreParagraphBlock = graphql`
   fragment CoreParagraphBlock on Wordpress_CoreParagraphBlock {
     originalContent
   }
-`
+`;
 
 export const CoreQuoteBlock = graphql`
   fragment CoreQuoteBlock on Wordpress_CoreQuoteBlock {
@@ -32,4 +34,4 @@ export const CoreQuoteBlock = graphql`
       citation
     }
   }
-`
+`;
